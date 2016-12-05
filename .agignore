@@ -1,0 +1,10 @@
+*tmp/*
+*generated*
+*external/*
+*img/*
+*.zip
+*vendor/*
+*.git
+*node_modules/*
+*.min.*
+

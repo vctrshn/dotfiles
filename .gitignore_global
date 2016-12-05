@@ -1,0 +1,9 @@
+*neomake.log
+*.DS_Store
+*tags
+lupaProject.json
+jsconfig.json
+*typings/
+typings.json
+.tern-project
+.tern-port

@@ -1,6 +1,9 @@
 source ~/dotfiles/.vimrc
 
-nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
+" Live preview of substitution command
+set inccommand=split
+
+"nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_list = 1000
@@ -22,3 +25,6 @@ let g:deoplete#omni#functions.javascript = [
 
 let g:tern_show_argument_hints = 'on_hold'
 let g:tern_show_signature_in_pum = 1
+
+"https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1

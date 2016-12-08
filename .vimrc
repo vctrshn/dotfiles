@@ -1,6 +1,5 @@
-set nocompatible
-
 call plug#begin('~/.vim/plugged')
+
 " Essentials
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -9,6 +8,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'wellle/targets.vim'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'
@@ -37,6 +37,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'joonty/vdebug'
 Plug 'tpope/vim-fugitive'
+Plug 'wincent/terminus'
 
 " Autocomplete/Snippets
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -54,10 +55,12 @@ Plug 'mhinz/vim-grepper'
 Plug 'romainl/vim-qf'
 
 " UI
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim' "https://github.com/Shougo/denite.nvim
+Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -97,6 +100,10 @@ set nobackup
 set nowb
 set noswapfile
 
+" But we want some undos
+set undofile
+set undodir="$HOME/.VIM_UNDO_FILES"
+
 " Tab and indent stuff
 set backspace=indent,eol,start
 set tabstop=4
@@ -125,7 +132,7 @@ set virtualedit=onemore
 set splitbelow splitright
 
 " Wrap characters on lines that exceed 80 characters in length
-set colorcolumn=80
+set colorcolumn=81
 " Set color of vertical split border
 set fillchars+=vert:\|
 
@@ -142,7 +149,7 @@ set tags=tags
 
 " Better pasting
 " Mapping to copy to system clipboard
-vnoremap <C-y> "+y
+vnoremap <C-c> "+y
 " Proper pasting from outside applications
 set pastetoggle=<F2>
 
@@ -201,6 +208,9 @@ let g:vim_json_syntax_conceal = 0
 
 " Remap colon to semicolon cuz lazy
 nnoremap ; :
+" Navigate between display lines
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
 " Default selection order starts from the bottom of the completion list,
 " which is almost always too specific. Reverse it so that selection
@@ -231,12 +241,6 @@ augroup phpSyntaxOverride
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
 
-" Reload vimrc on update
-augroup reload_vimrc {
-    autocmd!
-        autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END }
-
 " Open help in a vertical split instead of the default horizontal split
 " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
 cabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
@@ -257,13 +261,7 @@ nnoremap <C-m> :Marks<cr>
 nnoremap <C-f> :BTags<cr>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --smart-case --follow --glob "!.git/*" --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-command! -bang -nargs=* Rga
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --follow --glob "!.git/*" --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --fixed-strings --smart-case --follow --hidden --glob "!.git/*" --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -326,3 +324,49 @@ let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 
 let g:qf_mapping_ack_style = 1
+
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+
+"https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
+nnoremap <Leader>m :g//#<Left><Left>
+" make list-like commands more intuitive
+function! CCR()
+    let cmdline = getcmdline()
+    if cmdline =~ '\v\C^(ls|files|buffers)'
+        " like :ls but prompts for a buffer command
+        return "\<CR>:b"
+    elseif cmdline =~ '\v\C/(#|nu|num|numb|numbe|number)$'
+        " like :g//# but prompts for a command
+        return "\<CR>:"
+    elseif cmdline =~ '\v\C^(dli|il)'
+        " like :dlist or :ilist but prompts for a count for :djump or :ijump
+        return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
+    elseif cmdline =~ '\v\C^(cli|lli)'
+        " like :clist or :llist but prompts for an error/location number
+        return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
+    elseif cmdline =~ '\C^old'
+        " like :oldfiles but prompts for an old file to edit
+        set nomore
+        return "\<CR>:sil se more|e #<"
+    elseif cmdline =~ '\C^changes'
+        " like :changes but prompts for a change to jump to
+        set nomore
+        return "\<CR>:sil se more|norm! g;\<S-Left>"
+    elseif cmdline =~ '\C^ju'
+        " like :jumps but prompts for a position to jump to
+        set nomore
+        return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
+    elseif cmdline =~ '\C^marks'
+        " like :marks but prompts for a mark to jump to
+        return "\<CR>:norm! `"
+    elseif cmdline =~ '\C^undol'
+        " like :undolist but prompts for a change to undo
+        return "\<CR>:u "
+    else
+        return "\<CR>"
+    endif
+endfunction
+" map '<CR>' in command-line mode to execute the function above
+cnoremap <expr> <CR> CCR()

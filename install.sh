@@ -3,28 +3,28 @@
 sudo xcode-select --install
 
 # Rename remote repo to use ssh
-git remote set-url origin git@github.com:vshenanigans/dotfiles.git
+git remote set-url origin git@github.com:vctrshn/dotfiles.git
 
 # Set up directories
-mkdir $HOME/.config
-mkdir $HOME/.config/fonts
-mkdir $HOME/.config/nvim
+mkdir "$HOME/.config"
+mkdir "$HOME/.config/fonts"
+mkdir "$HOME/.config/nvim"
 
 # Link in config files
-ln -s $PWD/.bash_profile $HOME/.bash_profile
-ln -s $PWD/.bashrc $HOME/.bashrc
-ln -s $PWD/.gitignore_global $HOME/.gitignore_global
-ln -s $PWD/.vimrc $HOME/.vimrc
-ln -s $PWD/nvim/init.vim $HOME/.config/nvim/init.vim
-ln -s $PWD/.zshrc $HOME/.zshrc
-ln -s $PWD/.zlogin $HOME/.zlogin
-ln -s $PWD/.zlogout $HOME/.zlogout
-ln -s $PWD/.zpreztorc $HOME/.zpreztorc
-ln -s $PWD/.zprofile $HOME/.zprofile
-ln -s $PWD/.zshenv $HOME/.zshenv
-ln -s $PWD/themes/prompt_superlinh_setup ${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt/prompt_superlinh_setup
-ln -s $PWD/.tmux.conf $HOME/.tmux.conf
-ln -s $PWD/.agignore $HOME/.agignore
+ln -s "$PWD/.bash_profile" "$HOME/.bash_profile"
+ln -s "$PWD/.bashrc" "$HOME/.bashrc"
+ln -s "$PWD/.gitignore_global" "$HOME/.gitignore_global"
+ln -s "$PWD/.vimrc" "$HOME/.vimrc"
+ln -s "$PWD/nvim/init.vim" "$HOME/.config/nvim/init.vim"
+ln -s "$PWD/.zshrc" "$HOME/.zshrc"
+ln -s "$PWD/.zlogin" "$HOME/.zlogin"
+ln -s "$PWD/.zlogout" "$HOME/.zlogout"
+ln -s "$PWD/.zpreztorc" "$HOME/.zpreztorc"
+ln -s "$PWD/.zprofile" "$HOME/.zprofile"
+ln -s "$PWD/.zshenv" "$HOME/.zshenv"
+ln -s "$PWD/themes/prompt_superlinh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt/prompt_superlinh_setup"
+ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
+ln -s "$PWD/.agignore" "$HOME/.agignore"
 
 # Switch to zsh and use prezto
 # https://github.com/sorin-ionescu/prezto
@@ -53,7 +53,7 @@ sudo chown -R $(whoami) /usr/local/Cellar
 # 1) git
 # https://git-scm.com/book/en/v1/Getting-Started-Installing-Git
 brew install git
-git config --global core.excludesfile $HOME/.gitignore_global
+git config --global core.excludesfile "$HOME/.gitignore_global"
 
 # 2) tmux
 brew install tmux
@@ -108,12 +108,12 @@ npm install -g tern
 #-----------------------------------TMUX---------------------------------------
 # 1) Get tpm
 # https://github.com/tmux-plugins/tpm
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
 #----------------------------------Atom---------------------------------------
 # 1) Link in config files
-ln -s $PWD/atom/config.cson $HOME/.atom/config.cson
-ln -s $PWD/atom/keymap.cson $HOME/.atom/keymap.cson
+ln -s "$PWD/atom/config.cson" "$HOME/.atom/config.cson"
+ln -s "$PWD/atom/keymap.cson" "$HOME/.atom/keymap.cson"
 
 # 2) Install all Atom packages
 apm install --packages-file ./atom/package-list.txt
@@ -121,10 +121,10 @@ apm install --packages-file ./atom/package-list.txt
 #-------------------------------VIM/NEOVIM------------------------------------
 # 9) Get vim-plug
 # https://github.com/junegunn/vim-plug
-curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugUpgrade +PlugInstall +PlugUpdate
 
 #-------------------------------Fix fonts--------------------------------------
-git clone https://github.com/powerline/fonts $HOME/.config/fonts
-$HOME/.config/fonts/install.sh
+git clone https://github.com/powerline/fonts "$HOME/.config/fonts"
+"$HOME/.config/fonts/install.sh"

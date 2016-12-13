@@ -37,7 +37,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'joonty/vdebug'
 Plug 'tpope/vim-fugitive'
-Plug 'wincent/terminus'
 
 " Autocomplete/Snippets
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -61,6 +60,7 @@ Plug 'Shougo/vimfiler.vim'
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/vim-slash'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -139,6 +139,8 @@ set fillchars+=vert:\|
 " Perf stuff
 set lazyredraw
 set ttyfast
+set ttimeout
+set ttimeoutlen=50
 
 " Autocomplete options
 set completeopt=longest,menuone

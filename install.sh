@@ -72,7 +72,8 @@ brew install the_silver_searcher
 
 # 6) rg
 # https://github.com/BurntSushi/ripgrep
-brew install https://raw.githubusercontent.com/BurntSushi/ripgrep/master/pkg/brew/ripgrep.rb
+brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
+brew install burntsushi/ripgrep/ripgrep-bin
 
 # 7) python3/pip3
 brew install python3
@@ -104,6 +105,10 @@ brew cask install amethyst
 #-----------------------------------NPM---------------------------------------
 npm install -g eslint
 npm install -g tern
+npm install -g prettier
+
+#-----------------------------------Ruby----------------------------------------
+gem install coderay
 
 #-----------------------------------TMUX---------------------------------------
 # 1) Get tpm

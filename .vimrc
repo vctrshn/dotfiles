@@ -55,7 +55,7 @@ Plug 'romainl/vim-qf'
 
 " UI
 Plug 'Shougo/unite.vim' "https://github.com/Shougo/denite.nvim
-Plug 'Shougo/neoyank.vim'
+"Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
@@ -106,8 +106,9 @@ set undodir="$HOME/.VIM_UNDO_FILES"
 
 " Tab and indent stuff
 set backspace=indent,eol,start
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set copyindent
 set preserveindent
 set autoindent
@@ -224,12 +225,9 @@ match ErrorMsg '\s\+$'
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd! BufRead,BufWritePost * Neomake
-" Using 2 spaces by default
-autocmd Filetype * setlocal sts=2 expandtab
-" Using hard tabs for javascript, css
 autocmd Filetype javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 autocmd Filetype javascript.jsx let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-autocmd FileType css setlocal sts=0 noexpandtab omnifunc=csscomplete#CompleteCSS noci
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 " Template file syntax highlighting
 autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
 autocmd Filetype html,javascript.jsx EmmetInstall

@@ -19,7 +19,10 @@ export KEYTIMEOUT=1
 
 # User configuration
 export WORKON_HOME=~/Envs
-source /usr/local/bin/virtualenvwrapper.sh
+
+if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  source "/usr/local/bin/virtualenvwrapper.sh"
+fi
 
 export PATH="/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar/"
 
@@ -66,6 +69,7 @@ export FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD'
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
+  --preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"
 '
 # git with FZF aliases
 alias add='git add $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
@@ -81,5 +85,16 @@ alias ltop='tmux attach-session -d -t laptop'
 alias desktop='mux desktop && dtop'
 alias laptop='mux laptop && ltop'
 
+# update all the things
+alias updateAll='
+  brew upgrade fzf tmux neovim ripgrep/ripgrep-bin the_silver_searcher vim git ctags reattach-to-user-namespace python3;
+  npm update -g eslint tern prettier;
+  gem update coderay;
+  sudo pip3 install --upgrade neovim;
+  vim +PlugInstall +PlugUpgrade +PlugUpdate
+'
+
 # source work specific config
-source ~/.config/work.zsh
+if [[ -s "~/.config/work.zsh" ]]; then
+  source ~/.config/work.zsh
+fi

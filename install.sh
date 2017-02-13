@@ -22,7 +22,7 @@ ln -s "$PWD/.zlogout" "$HOME/.zlogout"
 ln -s "$PWD/.zpreztorc" "$HOME/.zpreztorc"
 ln -s "$PWD/.zprofile" "$HOME/.zprofile"
 ln -s "$PWD/.zshenv" "$HOME/.zshenv"
-ln -s "$PWD/themes/prompt_superlinh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt/prompt_superlinh_setup"
+ln -s "$PWD/themes/prompt_superlinh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_superlinh_setup"
 ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 ln -s "$PWD/.agignore" "$HOME/.agignore"
 
@@ -80,7 +80,8 @@ brew install python3
 
 # 8) neovim
 # https://github.com/neovim/homebrew-neovim/blob/master/README.md
-brew install neovim/neovim/neovim
+# https://github.com/neovim/homebrew-neovim/issues/149
+brew install neovim --env=std
 sudo pip3 install --upgrade neovim
 
 # 9) vim
@@ -97,6 +98,7 @@ brew cask install atom
 brew cask install iterm2
 brew cask install alfred
 brew cask install sublime-text
+brew cask install slack
 
 # 1) Amethyst
 # https://github.com/ianyh/Amethyst
@@ -108,7 +110,7 @@ npm install -g tern
 npm install -g prettier
 
 #-----------------------------------Ruby----------------------------------------
-gem install coderay
+sudo gem install coderay
 
 #-----------------------------------TMUX---------------------------------------
 # 1) Get tpm
@@ -127,6 +129,8 @@ apm install --packages-file ./atom/package-list.txt
 # 9) Get vim-plug
 # https://github.com/junegunn/vim-plug
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugUpgrade +PlugInstall +PlugUpdate
 

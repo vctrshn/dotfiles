@@ -115,8 +115,7 @@
   "fuzzy-finder": {}
   "git-blame":
     ignoreWhiteSpaceDiffs: true
-  "git-plus":
-    splitPane: "Right"
+  "git-plus": {}
   "incremental-search":
     cancelSearchOnBlur: true
     instantSearch: true

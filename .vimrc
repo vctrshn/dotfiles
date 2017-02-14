@@ -109,6 +109,7 @@ set backspace=indent,eol,start
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set expandtab
 set copyindent
 set preserveindent
 set autoindent
@@ -263,7 +264,7 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --fixed-strings --smart-case --follow --hidden --glob "!.git/*" --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \           : fzf#vim#with_preview('right:50%', '?'),
   \   <bang>0)
 " https://github.com/junegunn/fzf.vim/issues/184
 command! -nargs=* -complete=file Ags :call fzf#vim#ag_raw(<q-args>, fzf#wrap('ag-raw',

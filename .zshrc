@@ -69,7 +69,7 @@ export FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD'
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
-  --preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"
+  --preview "(coderay {} || cat {}) 2> /dev/null"
 '
 # git with FZF aliases
 alias add='git add $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'

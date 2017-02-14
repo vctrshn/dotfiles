@@ -16,7 +16,7 @@ Plug 'justinmk/vim-sneak'
 
 " JS Language Support gets its own support whoop
 "Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin', 'for': ['javascript', 'javascript.jsx'] }
+"Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -300,7 +300,7 @@ let g:neomake_warning_sign={'text': '⚠'}
 let g:neomake_error_sign={'text': '✗'}
 let g:neomake_css_enabled_makers = ['csslint']
 let g:neomake_php_enabled_makers = ['php']
-let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_maker = {
     \ 'exe': $PWD .'/node_modules/eslint/bin/eslint.js',
     \ 'args': ['-f', 'compact'],
@@ -314,7 +314,7 @@ let g:neomake_jsx_eslint_maker = {
     \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
     \ '%W%f: line %l\, col %c\, Warning - %m'
     \ }
-let g:flow#autoclose=1
+"let g:flow#autoclose=1
 let g:neomake_logfile='./.neomake.log'
 
 let g:user_emmet_leader_key='<C-E>'

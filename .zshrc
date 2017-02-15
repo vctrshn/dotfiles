@@ -86,11 +86,14 @@ alias desktop='mux desktop && dtop'
 alias laptop='mux laptop && ltop'
 
 # update all the things
+alias update='
+  brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher vim git ctags reattach-to-user-namespace python3;
+  nvm use latest && npm update -g eslint tern prettier;
+  sudo gem update coderay;
+  pip3 install --upgrade neovim;
+'
 alias updateAll='
-  brew upgrade fzf tmux neovim ripgrep/ripgrep-bin the_silver_searcher vim git ctags reattach-to-user-namespace python3;
-  npm update -g eslint tern prettier;
-  gem update coderay;
-  sudo pip3 install --upgrade neovim;
+  update;
   vim +PlugInstall +PlugUpgrade +PlugUpdate
 '
 

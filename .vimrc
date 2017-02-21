@@ -29,6 +29,7 @@ Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux'
 
@@ -228,6 +229,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd! BufRead,BufWritePost * Neomake
 autocmd Filetype javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 autocmd Filetype javascript.jsx let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+autocmd Filetype javascript nnoremap gd :TernDef<cr>
+autocmd Filetype javascript.jsx nnoremap gd :TernDef<cr>
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 " Template file syntax highlighting
 autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
@@ -253,13 +256,6 @@ nnoremap <C-e> :lopen<cr>
 " FZF stuff
 let g:fzf_buffers_jump = 1
 let g:fzf_files_options = '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-nnoremap <C-t> :Files<cr>
-nnoremap <C-p> :GitFiles<cr>
-nnoremap <C-g> :Tags<cr>
-nnoremap <C-b> :Buffers<cr>
-nnoremap <C-i> :History<cr>
-nnoremap <C-m> :Marks<cr>
-nnoremap <C-f> :BTags<cr>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --fixed-strings --smart-case --follow --hidden --glob "!.git/*" --color=always '.shellescape(<q-args>), 1,
@@ -269,6 +265,13 @@ command! -bang -nargs=* Rg
 " https://github.com/junegunn/fzf.vim/issues/184
 command! -nargs=* -complete=file Ags :call fzf#vim#ag_raw(<q-args>, fzf#wrap('ag-raw',
 \ {'options': "--preview 'coderay $(cut -d: -f1 <<< {}) 2> /dev/null | sed -n $(cut -d: -f2 <<< {}),\\$p | head -".&lines."'"}))
+nnoremap <C-t> :Files<cr>
+nnoremap <C-p> :GitFiles<cr>
+nnoremap <C-b> :Buffers<cr>
+nnoremap <C-i> :History<cr>
+nnoremap <C-m> :Marks<cr>
+nnoremap <C-f> :BLines<cr>
+nnoremap <C-g> :Rg<Space>
 
 " Grepper Aliases
 cabbrev ag Grepper -tool ag -open -switch
@@ -285,6 +288,9 @@ inoremap jk <Esc>
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap ;; <Esc>A;<Esc>
 inoremap ,, <Esc>A,<Esc>
+inoremap )) <Esc>A)<Esc>
+inoremap }} <Esc>A}<Esc>
+inoremap ]] <Esc>A]<Esc>
 
 let g:tmux_navigator_save_on_switch = 1
 
@@ -301,17 +307,15 @@ let g:neomake_warning_sign={'text': '⚠'}
 let g:neomake_error_sign={'text': '✗'}
 let g:neomake_css_enabled_makers = ['csslint']
 let g:neomake_php_enabled_makers = ['php']
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
 let g:neomake_javascript_eslint_maker = {
-    \ 'exe': $PWD .'/node_modules/eslint/bin/eslint.js',
     \ 'args': ['-f', 'compact'],
     \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
     \ '%W%f: line %l\, col %c\, Warning - %m'
     \ }
-let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
 let g:neomake_jsx_eslint_maker = {
-    \ 'exe': $PWD .'/node_modules/eslint/bin/eslint.js',
-    \ 'args': ['-f', 'compact', '-c', './.eslintrc'],
+    \ 'args': ['-f', 'compact'],
     \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
     \ '%W%f: line %l\, col %c\, Warning - %m'
     \ }

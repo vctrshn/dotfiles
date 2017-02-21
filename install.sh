@@ -22,7 +22,6 @@ ln -s "$PWD/.zlogout" "$HOME/.zlogout"
 ln -s "$PWD/.zpreztorc" "$HOME/.zpreztorc"
 ln -s "$PWD/.zprofile" "$HOME/.zprofile"
 ln -s "$PWD/.zshenv" "$HOME/.zshenv"
-ln -s "$PWD/themes/prompt_superlinh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_superlinh_setup"
 ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 ln -s "$PWD/.agignore" "$HOME/.agignore"
 
@@ -32,6 +31,7 @@ zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB
 chsh -s /bin/zsh
+ln -s "$PWD/themes/prompt_superlinh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_superlinh_setup"
 
 # Make sure node is correct, and install nvm
 # https://github.com/creationix/nvm#install-script

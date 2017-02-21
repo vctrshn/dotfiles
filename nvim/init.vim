@@ -7,7 +7,6 @@ nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_list = 1000
-let g:deoplete#auto_complete_delay = 10
 let g:deoplete#auto_refresh_delay = 10
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#enable_refresh_always = 1

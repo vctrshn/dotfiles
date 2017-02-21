@@ -24,7 +24,7 @@ if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
-export PATH="/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar/"
+export PATH="./node_modules/.bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar"
 
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
@@ -98,6 +98,6 @@ alias updateAll='
 '
 
 # source work specific config
-if [[ -s "~/.config/work.zsh" ]]; then
+if [[ -s "$HOME/.config/work.zsh" ]]; then
   source ~/.config/work.zsh
 fi

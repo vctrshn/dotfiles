@@ -10,7 +10,8 @@
     showFullPath: true
   "atom-lupa": {}
   "atom-material-ui":
-    fonts: {}
+    fonts:
+      fontSize: 12
     tabs:
       compactTabs: true
     treeView:
@@ -61,12 +62,16 @@
       "exception-reporting"
       "project-plus"
       "language-bison"
-      "vim-mode-plus"
+      "php-debug"
+      "vim-surround"
+      "language-gfm"
     ]
     ignoredNames: [
       ".git"
       "*.min*"
-      "*/node_modules/*"
+      "**/node_modules/**"
+      "**/vendor/**"
+      "**/.tmp/**"
       "*img/*"
       "*.png"
       "*.gif"
@@ -95,7 +100,7 @@
     return_tag: "@returns"
   "easy-motion-redux": {}
   editor:
-    fontSize: 11
+    fontSize: 9
     invisibles: {}
     lineHeight: 1.75
     showIndentGuide: true
@@ -116,6 +121,19 @@
   "git-blame":
     ignoreWhiteSpaceDiffs: true
   "git-plus": {}
+  "go-plus":
+    currentPanelHeight: "31.555555555555554vh"
+    panelDisplayMode: "closed"
+    panelFontSize: "1em"
+    test:
+      runTestsOnSave: false
+  "highlight-selected":
+    highlightInPanes: false
+  "hyperlink-hyperclick":
+    protocols: [
+      "http"
+      "https"
+    ]
   "incremental-search":
     cancelSearchOnBlur: true
     instantSearch: true
@@ -132,14 +150,19 @@
   "lazy-motion": {}
   linter:
     gutterPosition: "Left"
+    lintOnChange: false
     lintOnFly: false
-    showErrorPanel: false
+    showErrorPanel: true
     showErrorTabLine: true
   "linter-eslint":
     disableEslintIgnore: true
     disableWhenNoEslintConfig: false
     globalNodePath: "/usr/local"
   "linter-php": {}
+  "linter-ui-default":
+    panelRepresents: "Entire Project"
+    showProviderName: true
+    tooltipFollows: "Keyboard"
   "merge-conflicts": {}
   "mocha-runner": {}
   "mocha-test-runner": {}
@@ -201,8 +224,12 @@
   "vim-mode":
     useClipboardAsDefaultRegister: false
   "vim-mode-plus":
+    flashOnOperate: false
+    flashOnSearch: false
+    flashOnUndoRedo: false
     highlightSearch: true
     incrementalSearch: true
+    incrementalSearchVisitDirection: "relative"
     stayOnYank: true
     useSmartcaseForSearch: true
     useSmartcaseForSearchCurrentWord: true
@@ -214,13 +241,7 @@
 ".ansi.text":
   editor:
     tabLength: 4
-".babel.regexp.source":
-  editor:
-    tabLength: 4
 ".bison.source":
-  editor:
-    tabLength: 4
-".css.source.styled":
   editor:
     tabLength: 4
 ".hack.html.text":
@@ -230,12 +251,6 @@
   editor:
     tabLength: 4
 ".hg-commit.text":
-  editor:
-    tabLength: 4
-".js.jsx.source":
-  editor:
-    tabLength: 4
-".languagebabel.ttlextension":
   editor:
     tabLength: 4
 ".smarty.source":

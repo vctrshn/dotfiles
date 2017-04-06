@@ -59,7 +59,7 @@
 'atom-text-editor.vim-mode:not(.normal-mode):not(.visual-mode)':
   'j k': 'vim-mode:activate-normal-mode'
 'atom-text-editor.vim-mode-plus:not(.normal-mode):not(.visual-mode)':
-  'j k': 'vim-mode:activate-normal-mode'
+  'j k': 'vim-mode-plus:activate-normal-mode'
 '.platform-darwin':
   'ctrl-a |': 'pane:split-right-creating-empty-pane'
   'ctrl-a -': 'pane:split-down-creating-empty-pane'
@@ -85,3 +85,5 @@
 'atom-text-editor':
   'cmd-shift-b': 'git-blame:toggle'
   'cmd-shift-c': 'php-debug:toggleDebugging'
+'.platform-darwin atom-text-editor[data-grammar~=\"go\"]:not([mini])':
+  'g d': "golang:godef"

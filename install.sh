@@ -91,6 +91,10 @@ brew install vim --with-python3
 # Needed for tmux stuff: https://github.com/tmux-plugins/tmux-yank
 brew install reattach-to-user-namespace
 
+brew install tree
+brew install icdiff
+brew install diff-so-fancy
+
 #---------------------------------BREW CASK------------------------------------
 brew cask install google-chrome
 brew cask install firefox

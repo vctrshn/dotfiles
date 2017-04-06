@@ -1,0 +1,87 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "css.lint.duplicateProperties": "warning",
+    "dateTime.padHours": false,
+    "dateTime.showAMPM": true,
+    "dateTime.showDayOfMonth": true,
+    "dateTime.showDayOfWeek": true,
+    "dateTime.showMonth": true,
+    "dateTime.use24HourClock": false,
+    "debug.inlineValues": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.cursorBlinking": "solid",
+    "editor.dragAndDrop": true,
+    "editor.emptySelectionClipboard": false,
+    "editor.fontFamily": "Inconsolata for Powerline",
+    "editor.fontLigatures": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [80],
+    "editor.stablePeek": true,
+    "editor.tabSize": 2,
+    "eslint.run": "onSave",
+    "eslint.autoFixOnSave": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "*.min.js": true,
+        "*.min.css": true,
+        "**/dist-*": true,
+        "**/coverage": true,
+        "**/_maps": true,
+        "*.neomake.log": true,
+        "**/vendor": true,
+        "**/.gen": true,
+        "**/.tmp": true,
+        "**/go-build": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false,
+    "npm-intellisense.importLinebreak": ";\n",
+    "npm-intellisense.scanDevDependencies": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5",
+    "prettier.parser": "flow",
+    "search.quickOpen.includeSymbols": true,
+    "search.useRipgrep": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.lineHeight": 1.5,
+    "vim.easymotion": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j","k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": [";"],
+            "after": [":"]
+        }
+    ],
+    "vim.leader": " ",
+    "vsicons.dontShowNewVersionMessage": true,
+    "window.reopenFolders": "all",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.tips.enabled": false,
+    "workbench.welcome.enabled": false,
+    "material-icon-theme.showUpdateMessage": false
+}

@@ -100,6 +100,7 @@
     return_tag: "@returns"
   "easy-motion-redux": {}
   editor:
+    fontFamily: "Inconsolata for Powerline"
     fontSize: 9
     invisibles: {}
     lineHeight: 1.75
@@ -149,11 +150,7 @@
   "language-babel": {}
   "lazy-motion": {}
   linter:
-    gutterPosition: "Left"
     lintOnChange: false
-    lintOnFly: false
-    showErrorPanel: true
-    showErrorTabLine: true
   "linter-eslint":
     disableEslintIgnore: true
     disableWhenNoEslintConfig: false
@@ -161,6 +158,7 @@
   "linter-php": {}
   "linter-ui-default":
     panelRepresents: "Entire Project"
+    showPanel: true
     showProviderName: true
     tooltipFollows: "Keyboard"
   "merge-conflicts": {}

@@ -24,7 +24,7 @@ if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
-export PATH="./node_modules/.bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar"
+export PATH="./node_modules/.bin:$HOME/.nvm/*/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar"
 
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
@@ -46,6 +46,7 @@ alias gpu='git push'
 alias gs='git status'
 alias save='git add . && git commit --amend --reuse-message=HEAD'
 alias amend='git commit --amend --reuse-message=HEAD'
+alias rebase='git fetch origin && git rebase origin/master'
 
 # convenience aliases for editing configs
 alias ev='vim ~/.vimrc'
@@ -74,7 +75,7 @@ export FZF_DEFAULT_OPTS='
 # git with FZF aliases
 alias add='git add $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
 alias checkout='git checkout $(git branch | fzf-tmux --tac -d 15)'
-alias diff='git diff $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
+alias gdiff='git diff $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
 alias show='git show --pretty="format:" $(git show --pretty="format:" --name-only | fzf-tmux --tac -d 15)'
 alias undo='git checkout -- $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
 
@@ -87,7 +88,7 @@ alias laptop='mux laptop && ltop'
 
 # update all the things
 alias update='
-  brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher vim git ctags reattach-to-user-namespace python3;
+  brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher git ctags reattach-to-user-namespace python3 vim icdiff diff-so-fancy;
   nvm use latest && npm update -g eslint tern prettier;
   sudo gem update coderay;
   pip3 install --upgrade neovim;

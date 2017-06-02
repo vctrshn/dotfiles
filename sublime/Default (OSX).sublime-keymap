@@ -22,6 +22,20 @@
 			{"key": "setting.command_mode"}
 		],
 	},
+	{
+		"keys": ["ctrl+["],
+		"command": "prev_view",
+		"context": [
+			{"key": "setting.command_mode"}
+		],
+	},
+	{
+		"keys": ["ctrl+]"],
+		"command": "next_view",
+		"context": [
+			{"key": "setting.command_mode"}
+		],
+	},
 	// Origami keybindings
 	{
 		"keys": ["ctrl+a", "-"],

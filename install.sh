@@ -108,6 +108,11 @@ brew cask install slack
 # https://github.com/ianyh/Amethyst
 brew cask install amethyst
 
+# 2) karabiner
+# http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
+brew cask install karabiner
+
+
 #-----------------------------------NPM---------------------------------------
 npm install -g eslint
 npm install -g tern

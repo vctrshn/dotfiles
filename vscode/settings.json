@@ -47,6 +47,7 @@
     },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
+    "flow.runOnEdit": false,
     "go.buildOnSave": true,
     "go.useCodeSnippetsOnFunctionSuggest": false,
     "go.vetFlags": [],
@@ -72,11 +73,20 @@
     "vim.easymotionMarkerFontWeight": "600",
     "vim.easymotionMarkerHeight": 10,
     "vim.easymotionMarkerYOffset": 8,
+    "vim.enableNeovim": true,
     "vim.hlsearch": true,
     "vim.insertModeKeyBindingsNonRecursive": [
         {
             "before": ["j","k"],
             "after": ["<Esc>"]
+        },
+        {
+            "before": [";",";"],
+            "after": ["<Esc>", "A", ";", "<Esc>"]
+        },
+        {
+            "before": [",",","],
+            "after": ["<Esc>", "A", ",", "<Esc>"]
         }
     ],
     "vim.otherModesKeyBindingsNonRecursive": [
@@ -86,7 +96,6 @@
         }
     ],
     "vim.leader": " ",
-    "vsicons.dontShowNewVersionMessage": true,
     "window.reopenFolders": "all",
     "workbench.colorTheme": "Material Theme",
     "workbench.editor.closeOnFileDelete": false,
@@ -96,5 +105,7 @@
     "workbench.tips.enabled": false,
     "workbench.welcome.enabled": false,
     "material-icon-theme.showUpdateMessage": false,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 0,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.disableAnnoyingGcMessage": true
 }

@@ -19,7 +19,7 @@
     ui:
       animations: false
       panelContrast: true
-      panelShadows: true
+      useAnimations: false
   "atom-terminal-panel": {}
   "atom-ternjs":
     useSnippets: true
@@ -65,6 +65,9 @@
       "php-debug"
       "vim-surround"
       "language-gfm"
+      "github"
+      "open-on-github"
+      "whitespace"
     ]
     ignoredNames: [
       ".git"
@@ -101,7 +104,7 @@
   "easy-motion-redux": {}
   editor:
     fontFamily: "Inconsolata for Powerline"
-    fontSize: 9
+    fontSize: 10
     invisibles: {}
     lineHeight: 1.75
     showIndentGuide: true
@@ -229,6 +232,7 @@
     incrementalSearch: true
     incrementalSearchVisitDirection: "relative"
     stayOnYank: true
+    useClipboardAsDefaultRegister: false
     useSmartcaseForSearch: true
     useSmartcaseForSearchCurrentWord: true
     wrapLeftRightMotion: true

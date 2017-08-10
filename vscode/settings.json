@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
+    "ActiveFileInStatusBar.fullpath": false,
     "css.lint.duplicateProperties": "warning",
     "dateTime.padHours": false,
     "dateTime.showAMPM": true,
@@ -9,6 +10,7 @@
     "dateTime.use24HourClock": false,
     "debug.inlineValues": true,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.autoIndent": true,
     "editor.cursorBlinking": "solid",
     "editor.dragAndDrop": true,
     "editor.emptySelectionClipboard": false,
@@ -20,12 +22,25 @@
         "comments": false,
         "strings": true
     },
+    "editor.minimap.enabled": false,
     "editor.renderIndentGuides": true,
     "editor.renderWhitespace": "all",
     "editor.rulers": [80],
     "editor.stablePeek": true,
     "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "emmet.useNewEmmet": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "jsx": {
+            "attr_quotes": "single"
+        }
+    },
+    "emmet.showExpandedAbbreviation": "always",
     "eslint.run": "onSave",
+    "extensions.autoUpdate": false,
     "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/.git": true,
@@ -48,15 +63,16 @@
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "flow.runOnEdit": false,
-    "go.buildOnSave": true,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.blame.line.enabled": false,
     "go.useCodeSnippetsOnFunctionSuggest": false,
     "go.vetFlags": [],
-    "go.vetOnSave": true,
     "javascript.format.enable": false,
     "javascript.validate.enable": false,
+    "material-icon-theme.showUpdateMessage": false,
     "npm-intellisense.importLinebreak": ";\n",
     "npm-intellisense.scanDevDependencies": true,
-    "path-intellisense.autoSlashAfterDirectory": true,
     "path-intellisense.showHiddenFiles": true,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "es5",
@@ -66,6 +82,7 @@
     "telemetry.enableTelemetry": false,
     "terminal.integrated.lineHeight": 1.5,
     "terminal.integrated.fontSize": 10,
+    "typescript.npm": "/usr/local/bin/npm",
     "vim.easymotion": true,
     "vim.easymotionMarkerBackgroundColor": "#222",
     "vim.easymotionMarkerFontFamily": "Inconsolata for Powerline",
@@ -77,15 +94,15 @@
     "vim.hlsearch": true,
     "vim.insertModeKeyBindingsNonRecursive": [
         {
-            "before": ["j","k"],
+            "before": ["j", "k"],
             "after": ["<Esc>"]
         },
         {
-            "before": [";",";"],
+            "before": [";", ";"],
             "after": ["<Esc>", "A", ";", "<Esc>"]
         },
         {
-            "before": [",",","],
+            "before": [",", ","],
             "after": ["<Esc>", "A", ",", "<Esc>"]
         }
     ],
@@ -93,19 +110,28 @@
         {
             "before": [";"],
             "after": [":"]
+        },
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
         }
     ],
     "vim.leader": " ",
-    "window.reopenFolders": "all",
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.timeout": 200,
+    "window.restoreWindows": "all",
+    "window.openFilesInNewWindow": "off",
     "workbench.colorTheme": "Material Theme",
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.iconTheme": "material-icon-theme",
     "workbench.tips.enabled": false,
-    "workbench.welcome.enabled": false,
-    "material-icon-theme.showUpdateMessage": false,
+    "workbench.startupEditor": "none",
     "window.zoomLevel": 0,
-    "vim.disableAnnoyingNeovimMessage": true,
-    "vim.disableAnnoyingGcMessage": true
+    "vim.disableAnnoyingNeovimMessage": true
 }

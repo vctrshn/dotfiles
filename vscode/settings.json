@@ -29,7 +29,6 @@
     "editor.stablePeek": true,
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
-    "emmet.useNewEmmet": true,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
@@ -41,6 +40,7 @@
     "emmet.showExpandedAbbreviation": "always",
     "eslint.run": "onSave",
     "extensions.autoUpdate": false,
+    "extensions.ignoreRecommendations": true,
     "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/.git": true,
@@ -132,6 +132,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.tips.enabled": false,
     "workbench.startupEditor": "none",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "vim.disableAnnoyingNeovimMessage": true
 }

@@ -92,8 +92,11 @@ brew install vim --with-python3
 brew install reattach-to-user-namespace
 
 brew install tree
+brew install tig
+brew install ranger
 brew install icdiff
 brew install diff-so-fancy
+brew install watchman
 
 #---------------------------------BREW CASK------------------------------------
 brew cask install google-chrome
@@ -117,6 +120,8 @@ brew cask install karabiner
 npm install -g eslint
 npm install -g tern
 npm install -g prettier
+npm install -g flow-bin
+npm install -g flow-vim-quickfix
 
 #-----------------------------------Ruby----------------------------------------
 sudo gem install coderay

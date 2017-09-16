@@ -26,5 +26,8 @@ let g:deoplete#omni#functions.javascript = [
 let g:tern_show_argument_hints = 'on_hold'
 let g:tern_show_signature_in_pum = 1
 
-"https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+autocmd TermOpen * setlocal nonumber

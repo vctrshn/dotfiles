@@ -9,6 +9,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+" More text objects
+Plug 'kana/vim-textobj-function'
+Plug 'haya14busa/vim-textobj-function-syntax'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'

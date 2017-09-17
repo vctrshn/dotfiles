@@ -152,6 +152,8 @@ set lazyredraw
 set ttyfast
 set ttimeout
 set ttimeoutlen=50
+" Disable syntax highlighting after first 200 chars in a line
+set synmaxcol=200
 
 " Autocomplete options
 set completeopt=menu,noinsert,menuone,noselect

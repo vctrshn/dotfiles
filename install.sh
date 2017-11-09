@@ -115,21 +115,25 @@ brew cask install amethyst
 # http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
 brew cask install karabiner
 
-
 #-----------------------------------NPM---------------------------------------
 npm install -g eslint
 npm install -g tern
 npm install -g prettier
 npm install -g flow-bin
 npm install -g flow-vim-quickfix
+npm install -g tldr
 
 #-----------------------------------Ruby----------------------------------------
-sudo gem install coderay
+sudo gem install coderay rouge
 
 #-----------------------------------TMUX---------------------------------------
 # 1) Get tpm
 # https://github.com/tmux-plugins/tpm
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+
+# 2) Get tmuxp
+# https://github.com/tony/tmuxp
+pip install tmuxp
 
 #----------------------------------Atom---------------------------------------
 # 1) Link in config files

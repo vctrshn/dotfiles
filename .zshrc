@@ -91,7 +91,7 @@ alias update='
   brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher git ctags reattach-to-user-namespace python3 vim icdiff diff-so-fancy;
   nvm use latest && npm update -g eslint tern prettier;
   sudo gem update coderay;
-  pip3 install --upgrade neovim;
+  sudo pip3 install --upgrade neovim tmuxp;
 '
 alias updateAll='
   update;

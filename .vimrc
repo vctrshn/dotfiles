@@ -5,11 +5,12 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
+
 " More text objects
 Plug 'kana/vim-textobj-function'
 Plug 'haya14busa/vim-textobj-function-syntax'
@@ -17,15 +18,19 @@ Plug 'haya14busa/vim-textobj-function-syntax'
 " Navigation
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 
 " JS Language Support gets its own support whoop
-"Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
-"Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin', 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'othree/yajs.vim', { 'for': ['javascript'] }
+Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin', 'for': ['javascript'] }
+" Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+Plug 'othree/es.next.syntax.vim', { 'for': ['javascript'] }
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'npm install', 'for': ['javascript'] }
+Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
 
 " Language Support
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
@@ -34,81 +39,94 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-"Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 
 " Integrations
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'joonty/vdebug'
+" Plug 'joonty/vdebug'
 Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-conflicted'
+Plug 'jreybert/vimagit'
 
 " Autocomplete/Snippets
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'wokalski/autocomplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'steelsojka/deoplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'zchee/deoplete-go', { 'for': 'go' , 'do': 'make' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'] }
+Plug 'wokalski/autocomplete-flow', { 'for': ['javascript'] }
+" Plug 'steelsojka/deoplete-flow', { 'for': ['javascript'] }
+" Plug 'zchee/deoplete-go', { 'for': 'go' , 'do': 'make' }
+if (has('nvim'))
+  Plug 'roxma/nvim-completion-manager'
+  Plug 'roxma/ncm-flow'
+  Plug 'roxma/nvim-cm-tern'
+endif
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
 Plug 'othree/csscomplete.vim', { 'for': 'css' }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 
 " Grepping/Linting
-Plug 'neomake/neomake'
-Plug 'ddrscott/vim-side-search'
+" Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'mhinz/vim-grepper'
 Plug 'romainl/vim-qf'
+Plug 'wincent/ferret'
+Plug 'dyng/ctrlsf.vim'
 
 " UI
 Plug 'Shougo/unite.vim' "https://github.com/Shougo/denite.nvim
 "Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'ap/vim-css-color'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'junegunn/vim-slash'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'dhruvasagar/vim-zoom'
+Plug 'equalsraf/neovim-gui-shim'
 
 " Colorschemes
-Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
-Plug 'mhartington/oceanic-next'
-Plug 'w0ng/vim-hybrid'
-Plug 'junegunn/seoul256.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'morhetz/gruvbox'
-Plug 'kristijanhusak/vim-hybrid-material'
+
+" Pending
+Plug 'tomtom/tcomment_vim'
+" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'majutsushi/tagbar'
+
 call plug#end()
 
 filetype plugin indent on
 syntax enable
 set number
-set relativenumber
 set background=dark
 " Get some true color support because it's 2016
-if (has("termguicolors"))
+if (has('termguicolors'))
     set termguicolors
 endif
-colorscheme onedark
+if (has('guicursor'))
+    set guicursor
+endif
+colorscheme one
+
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 " Set to auto read when a file is changed from the outside
 set autoread
 " Set to write when focus is lost
 set autowriteall
+" Allow for modifications to buffers other than the current one
+set hidden
 
 " Turn off backups
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " But we want some undos
@@ -179,6 +197,7 @@ set formatoptions+=j
 set laststatus=2
 set statusline=%f
 set statusline+=%{fugitive#statusline()}
+set statusline+=%{ConflictedVersion()}
 " More status line(airline) stuff
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -203,21 +222,43 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Map leader key
-let mapleader = " "
+let g:mapleader = ' '
 
 " Vim-Sneak config
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
 
+" Incsearch.vim config
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" incsearch.vim x fuzzy x vim-easymotion
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+noremap <silent><expr> <Leader>/ incsearch#go(<SID>config_easyfuzzymotion())
+
 " Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
-map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 1
 let g:EasyMotion_smartcase = 1
 
+" JS syntax support
 let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'react'
 let g:javascript_plugin_flow = 1
@@ -232,23 +273,21 @@ nnoremap <silent> k gk
 " Default selection order starts from the bottom of the completion list,
 " which is almost always too specific. Reverse it so that selection
 " goes from general->specific
-"let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " Highlight trailing whitespace with error
 match ErrorMsg '\s\+$'
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 "autocmd! BufRead,BufWritePost * Neomake
-autocmd Filetype javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-autocmd Filetype javascript.jsx let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-autocmd Filetype javascript nnoremap <silent> gd :TernDef<cr>
-autocmd Filetype javascript.jsx nnoremap <silent> gd :TernDef<cr>
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ "es5"
-autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5"
+" autocmd Filetype javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+autocmd Filetype javascript nnoremap <silent> gd :FlowJumpToDef<cr>
+autocmd FileType javascript set formatprg="prettier --stdin --single-quote --trailing-comma es5"
+autocmd FileType json set formatprg="prettier --parser json --stdin --single-quote --trailing-comma es5"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 " Template file syntax highlighting
 autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
-autocmd Filetype html,javascript.jsx EmmetInstall
+autocmd Filetype html,javascript EmmetInstall
 
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
@@ -266,17 +305,25 @@ cabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" Disable all GitGutter mappings except next/prev diff
+let g:gitgutter_map_keys = 0
+nmap [c <Plug>GitGutterPrevHunk
+nmap ]c <Plug>GitGutterNextHunk
+" GitGutterUndoHunk is too hard to type
 cabbrev revert GitGutterUndoHunk
 
 " Grep Stuff
 " Ripgrep hella fast
 cabbrev rg Grepper -tool rg -open -switch
-cabbrev ss SideSearch
+let g:ctrlsf_ackprg = '/usr/local/bin/rg'
+let g:ctrlsf_confirm_save = 0
+let g:ctrlsf_indent = 2
+let g:ctrlsf_winsize = '30%'
 
 let g:qf_mapping_ack_style = 1
 let g:qf_auto_open_quickfix = 0
 let g:qf_auto_open_loclist = 0
-nnoremap <C-e> :lopen<cr>
+
 " FZF stuff
 let g:fzf_buffers_jump = 1
 let g:fzf_files_options = '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
@@ -286,19 +333,17 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%', '?'),
   \   <bang>0)
-" https://github.com/junegunn/fzf.vim/issues/184
-command! -nargs=* -complete=file Ags :call fzf#vim#ag_raw(<q-args>, fzf#wrap('ag-raw',
-\ {'options': "--preview 'coderay $(cut -d: -f1 <<< {}) 2> /dev/null | sed -n $(cut -d: -f2 <<< {}),\\$p | head -".&lines."'"}))
 nnoremap <C-t> :Files<cr>
 nnoremap <C-p> :GitFiles<cr>
 nnoremap <C-b> :Buffers<cr>
-nnoremap <C-i> :History<cr>
-nnoremap <C-m> :Marks<cr>
 nnoremap <C-f> :BLines<cr>
 nnoremap <C-g> :Rg<Space>
 
+" Buffer manipulation
 " Close buffers without closing splits
 nnoremap <C-c> :bp\|bd #<CR>
+nnoremap <Leader>h :bp <CR>
+nnoremap <Leader>l :bn <CR>
 
 " Map jk to exit insert mode
 inoremap jk <Esc>
@@ -323,31 +368,53 @@ let g:neomake_css_enabled_makers = ['csslint']
 let g:neomake_php_enabled_makers = ['php']
 let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
 let g:neomake_eslint_maker = {
-    \ 'args': ['-f', 'compact'],
+    \ 'args': ['-f', 'compact', getcwd()],
     \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
     \ '%W%f: line %l\, col %c\, Warning - %m'
     \ }
+" let g:neomake_flow_maker = {
+"     \ 'exe': 'flow',
+"     \ 'args': ['--from=vim', '--show-all-errors'],
+"     \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
+"     \ 'postprocess': function('neomake#makers#ft#javascript#FlowProcess')
+"     \ }
 let g:neomake_flow_maker = {
-    \ 'exe': 'flow',
-    \ 'args': ['--from=vim', '--show-all-errors'],
-    \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
-    \ 'postprocess': function('neomake#makers#ft#javascript#FlowProcess')
-    \ }
-let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
-let g:neomake_jsx_eslint_maker = {
-    \ 'args': ['-f', 'compact'],
-    \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-    \ '%W%f: line %l\, col %c\, Warning - %m'
-    \ }
-"let g:neomake_logfile='./.neomake.log'
+      \ 'exe': 'sh',
+      \ 'args': ['-c', 'flow --json 2> /dev/null | flow-vim-quickfix'],
+      \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+      \ 'cwd': '%:p:h'
+      \ }
+
+" let g:neomake_logfile='./.neomake.log'
 " For makers that need to be run at the root directory to be truly effective,
 " ie Flow, set up directory makers for them
 "https://github.com/neomake/neomake/issues/787
-let customFTSettings = ['js']
+let g:customFTSettings = ['js', 'qf']
 " Run neomake for all file types except those in customFTSettings (eg. JS)
-autocmd BufWritePre * if index(customFTSettings, &ft) < 0 | Neomake
+" autocmd! BufWritePost * if index(customFTSettings, &ft) < 0 | Neomake
 " Run neomake! for JS files
-autocmd! BufWritePost,BufRead *.js Neomake! flow eslint
+" autocmd! BufWritePost *.js Neomake! flow eslint
+
+
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_error = '✗'
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_javascript_flow_executable = 'flow --json 2> /dev/null | flow-vim-quickfix'
+let g:ale_set_quickfix = 1
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+
+let g:flow#enable = 0
+let g:flow#omnifunc = 0
+let g:flow#showquickfix = 0
+
 
 let g:user_emmet_leader_key='<C-E>'
 let g:user_emmet_mode='i'
@@ -398,10 +465,15 @@ let g:multi_cursor_skip_key='<C-x>'
 " " map '<CR>' in command-line mode to execute the function above
 " cnoremap <expr> <CR> CCR()
 
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 let g:go_metalinter_autosave = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+
+" let g:LanguageClient_serverCommands = {
+"   \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+"   \ }
+" let g:LanguageClient_autoStart = 1

@@ -132,6 +132,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.tips.enabled": false,
     "workbench.startupEditor": "none",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "vim.disableAnnoyingNeovimMessage": true
 }

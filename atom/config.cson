@@ -60,10 +60,7 @@
     disabledPackages: [
       "metrics"
       "exception-reporting"
-      "project-plus"
       "language-bison"
-      "php-debug"
-      "vim-surround"
       "language-gfm"
       "github"
       "open-on-github"
@@ -160,6 +157,7 @@
     globalNodePath: "/usr/local"
   "linter-php": {}
   "linter-ui-default":
+    panelHeight: 312
     panelRepresents: "Entire Project"
     showPanel: true
     showProviderName: true
@@ -197,7 +195,7 @@
     style:
       animationSpeed: 1000
       defaultPanelHeight: "40%"
-      theme: "dracula"
+      theme: "one-dark"
   "project-manager":
     closeCurrent: true
   "project-plus": {}
@@ -231,6 +229,7 @@
     highlightSearch: true
     incrementalSearch: true
     incrementalSearchVisitDirection: "relative"
+    notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
     stayOnYank: true
     useClipboardAsDefaultRegister: false
     useSmartcaseForSearch: true

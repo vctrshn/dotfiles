@@ -65,7 +65,11 @@ export XDEBUG_CONFIG="idekey=sublime.xdebug"
 
 # FZF Config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --glob "!.git/**"
+--glob "!.hg/**" --glob "!**/*.ico" --glob "!**/*.png" --glob "!**/*.jpg"
+--glob "!**/*.jpeg" --glob "!**/*.zip" --glob "!**/*.tar.gz" --glob "!**/*.gif"
+--glob "!**/*.avi" --glob "!**/*.mp4" --glob "!**/*.mp3" --glob "!**/*.ogg"
+--glob "!**/*.tgz" --glob "!**/*.gz" --glob "!**/*.ctg.z" --glob "!**/*.bcmap"'
 export FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD'
 export FZF_DEFAULT_OPTS='
   -m -i

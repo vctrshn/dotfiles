@@ -318,10 +318,8 @@ cabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Disable all GitGutter mappings except next/prev diff
+" Disable all GitGutter mappings, since signify seems to work better
 let g:gitgutter_map_keys = 0
-nmap [c <Plug>GitGutterPrevHunk
-nmap ]c <Plug>GitGutterNextHunk
 " GitGutterUndoHunk is too hard to type
 cabbrev revert GitGutterUndoHunk
 

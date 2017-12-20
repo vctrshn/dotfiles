@@ -100,6 +100,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
 
 " Pending
+Plug 'wincent/terminus'
 " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()

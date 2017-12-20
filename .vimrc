@@ -1,3 +1,4 @@
+source ~/.work.before.vimrc
 call plug#begin('~/.vim/plugged')
 
 " Essentials
@@ -6,10 +7,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
+Plug 'FooSoft/vim-argwrap'
 
 " More text objects
 Plug 'kana/vim-textobj-function'
@@ -31,6 +34,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'npm install', 'for': ['javascript'] }
 Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
 " Language Support
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
@@ -41,14 +45,18 @@ Plug 'othree/html5.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'tmux-plugins/vim-tmux'
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
+Plug 'mxw/vim-xhp'
+Plug 'hhvm/vim-hack'
 
 " Integrations
 Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'joonty/vdebug'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-conflicted'
 Plug 'jreybert/vimagit'
+Plug 'wincent/vim-clipper'
 
 " Autocomplete/Snippets
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -92,9 +100,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
 
 " Pending
-Plug 'tomtom/tcomment_vim'
 " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -264,11 +270,16 @@ let g:used_javascript_libs = 'react'
 let g:javascript_plugin_flow = 1
 let g:vim_json_syntax_conceal = 0
 
-" Remap colon to semicolon cuz lazy
+" Swap colon to semicolon cuz lazy
 nnoremap ; :
+nnoremap : ;
 " Navigate between display lines
 nnoremap <silent> j gj
 nnoremap <silent> k gk
+
+" Always append trailing commas when using argwrap
+let g:argwrap_tail_comma = 1
+nnoremap <silent> <leader>q :ArgWrap<CR>
 
 " Default selection order starts from the bottom of the completion list,
 " which is almost always too specific. Reverse it so that selection
@@ -282,6 +293,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 "autocmd! BufRead,BufWritePost * Neomake
 " autocmd Filetype javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 autocmd Filetype javascript nnoremap <silent> gd :FlowJumpToDef<cr>
+autocmd Filetype javascript nnoremap <silent> gh :FlowType<cr>
 autocmd FileType javascript set formatprg="prettier --stdin --single-quote --trailing-comma es5"
 autocmd FileType json set formatprg="prettier --parser json --stdin --single-quote --trailing-comma es5"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
@@ -325,6 +337,17 @@ let g:qf_auto_open_quickfix = 0
 let g:qf_auto_open_loclist = 0
 
 " FZF stuff
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 let g:fzf_buffers_jump = 1
 let g:fzf_files_options = '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 command! -bang -nargs=* Rg
@@ -333,11 +356,11 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%', '?'),
   \   <bang>0)
-nnoremap <C-t> :Files<cr>
-nnoremap <C-p> :GitFiles<cr>
+nnoremap <C-t> :GitFiles<cr>
+nnoremap <C-p> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
 nnoremap <C-f> :BLines<cr>
-nnoremap <C-g> :Rg<Space>
+nnoremap <C-g> :Rg <C-r><C-w>
 
 " Buffer manipulation
 " Close buffers without closing splits
@@ -362,34 +385,34 @@ map <silent> <C-w>j :res -5<CR>
 map <silent> <C-w>h :vertical resize -5<CR>
 map <silent> <C-w>l :vertical resize +5<CR>
 
-let g:neomake_warning_sign={'text': '⚠'}
-let g:neomake_error_sign={'text': '✗'}
-let g:neomake_css_enabled_makers = ['csslint']
-let g:neomake_php_enabled_makers = ['php']
-let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
-let g:neomake_eslint_maker = {
-    \ 'args': ['-f', 'compact', getcwd()],
-    \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-    \ '%W%f: line %l\, col %c\, Warning - %m'
-    \ }
+" let g:neomake_warning_sign={'text': '⚠'}
+" let g:neomake_error_sign={'text': '✗'}
+" let g:neomake_css_enabled_makers = ['csslint']
+" let g:neomake_php_enabled_makers = ['php']
+" let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+" let g:neomake_eslint_maker = {
+"     \ 'args': ['-f', 'compact', getcwd()],
+"     \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+"     \ '%W%f: line %l\, col %c\, Warning - %m'
+"     \ }
 " let g:neomake_flow_maker = {
 "     \ 'exe': 'flow',
 "     \ 'args': ['--from=vim', '--show-all-errors'],
 "     \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
 "     \ 'postprocess': function('neomake#makers#ft#javascript#FlowProcess')
 "     \ }
-let g:neomake_flow_maker = {
-      \ 'exe': 'sh',
-      \ 'args': ['-c', 'flow --json 2> /dev/null | flow-vim-quickfix'],
-      \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-      \ 'cwd': '%:p:h'
-      \ }
-
+" let g:neomake_flow_maker = {
+"       \ 'exe': 'sh',
+"       \ 'args': ['-c', 'flow --json 2> /dev/null | flow-vim-quickfix'],
+"       \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+"       \ 'cwd': '%:p:h'
+"       \ }
+"
 " let g:neomake_logfile='./.neomake.log'
 " For makers that need to be run at the root directory to be truly effective,
 " ie Flow, set up directory makers for them
 "https://github.com/neomake/neomake/issues/787
-let g:customFTSettings = ['js', 'qf']
+" let g:customFTSettings = ['js', 'qf']
 " Run neomake for all file types except those in customFTSettings (eg. JS)
 " autocmd! BufWritePost * if index(customFTSettings, &ft) < 0 | Neomake
 " Run neomake! for JS files
@@ -407,7 +430,7 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_javascript_flow_executable = 'flow --json 2> /dev/null | flow-vim-quickfix'
+" let g:ale_javascript_flow_executable = 'flow --json 2> /dev/null | flow-vim-quickfix'
 let g:ale_set_quickfix = 1
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
@@ -471,9 +494,11 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " let g:LanguageClient_serverCommands = {
 "   \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
 "   \ }
 " let g:LanguageClient_autoStart = 1
+
+source ~/.work.after.vimrc

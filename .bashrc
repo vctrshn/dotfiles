@@ -10,6 +10,7 @@ alias amend='git commit --amend --reuse-message=HEAD'
 alias rebase='git fetch origin && git rebase origin/master'
 
 alias vim='nvim'
+# https://github.com/wincent/clipper
 alias clip="nc localhost 8377"
 
 # convenience aliases for editing configs

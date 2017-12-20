@@ -37,7 +37,7 @@ Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
 " Language Support
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+" Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json'

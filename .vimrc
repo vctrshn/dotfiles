@@ -197,6 +197,16 @@ vnoremap <C-c> "+y
 " Proper pasting from outside applications
 set pastetoggle=<F2>
 
+" Moving lines up and down in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Sorting inside of curly braces and paragraphs
+nnoremap <silent> <leader>sc vi{:'<, '>sort i<CR>
+nnoremap <silent> <leader>sp vip:'<, '>sort i<CR>
+" Visual mode sorting of selection
+vnoremap <silent> <leader>s :'<, '>sort i<CR>
+
 " Delete comment character when joining commented lines
 set formatoptions+=j
 

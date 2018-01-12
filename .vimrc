@@ -47,6 +47,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'mxw/vim-xhp'
 Plug 'hhvm/vim-hack'
+Plug 'reasonml-editor/vim-reason-plus'
 
 " Integrations
 Plug 'airblade/vim-gitgutter'

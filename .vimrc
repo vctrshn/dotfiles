@@ -440,7 +440,6 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
 " let g:ale_javascript_flow_executable = 'flow --json 2> /dev/null | flow-vim-quickfix'
-let g:ale_set_quickfix = 1
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 let g:flow#enable = 0

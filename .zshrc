@@ -74,7 +74,7 @@ export FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD'
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
-  --preview "(coderay {} || cat {}) 2> /dev/null"
+  --preview "(hightlight -O ansi -l {} || cat {}) 2> /dev/null"
 '
 # git with FZF aliases
 alias add='git add $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
@@ -92,9 +92,8 @@ alias laptop='mux laptop && ltop'
 
 # update all the things
 alias update='
-  brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher git ctags reattach-to-user-namespace python3 vim icdiff diff-so-fancy;
+  brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher git ctags reattach-to-user-namespace python3 vim icdiff diff-so-fancy highlight;
   nvm use latest && npm update -g eslint tern prettier;
-  sudo gem update coderay;
   sudo pip3 install --upgrade neovim tmuxp;
 '
 alias updateAll='

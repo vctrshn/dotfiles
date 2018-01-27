@@ -97,6 +97,7 @@ brew install ranger
 brew install icdiff
 brew install diff-so-fancy
 brew install watchman
+brew install highlight
 
 #---------------------------------BREW CASK------------------------------------
 brew cask install google-chrome
@@ -122,9 +123,6 @@ npm install -g prettier
 npm install -g flow-bin
 npm install -g flow-vim-quickfix
 npm install -g tldr
-
-#-----------------------------------Ruby----------------------------------------
-sudo gem install coderay rouge
 
 #-----------------------------------TMUX---------------------------------------
 # 1) Get tpm

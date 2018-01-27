@@ -360,17 +360,16 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_buffers_jump = 1
 let g:fzf_files_options = '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-command! -bang -nargs=* Rg
+command! -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --smart-case --follow --hidden --glob "!.git/*" --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%', '?'),
-  \   <bang>0)
+  \   "rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --color=always --glob '!.git/**' --glob '!.hg/**' --glob '!**/*.ico' --glob '!**/*.png' --glob '!**/*.jpg' --glob '!**/*.jpeg' --glob '!**/*.zip' --glob '!**/*.tar.gz' --glob '!**/*.gif' --glob '!**/*.avi' --glob '!**/*.mp4' --glob '!**/*.mp3' --glob '!**/*.ogg' --glob '!**/*.tgz' --glob '!**/*.gz' --glob '!**/*.ctg.z' --glob '!**/*.bcmap' ".<q-args>, 1,
+  \ fzf#vim#with_preview('right:35%'),
+  \ )
 nnoremap <C-t> :GitFiles<cr>
 nnoremap <C-p> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
 nnoremap <C-f> :BLines<cr>
-nnoremap <C-g> :Rg <C-r><C-w>
+nnoremap <expr> <C-g> (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
 
 " Buffer manipulation
 " Close buffers without closing splits

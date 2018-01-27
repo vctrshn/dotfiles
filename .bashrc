@@ -29,12 +29,14 @@ export EDITOR=nvim
 export HISTCONTROL=erasedups
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --glob "!.git/**" --glob "!.hg/**" --glob "!**/*.ico" --glob "!**/*.png" --glob "!**/*.jpg" --glob "!**/*.jpeg" --glob "!**/*.zip" --glob "!**/*.tar.gz" --glob "!**/*.gif" --glob "!**/*.avi" --glob "!**/*.mp4" --glob "!**/*.mp3" --glob "!**/*.ogg" --glob "!**/*.tgz" --glob "!**/*.gz" --glob "!**/*.ctg.z" --glob "!**/*.bcmap"'
+export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git/**' --glob '!.hg/**' --glob '!**/*.ico' --glob '!**/*.png' --glob '!**/*.jpg' --glob '!**/*.jpeg' --glob '!**/*.zip' --glob '!**/*.tar.gz' --glob '!**/*.gif' --glob '!**/*.avi' --glob '!**/*.mp4' --glob '!**/*.mp3' --glob '!**/*.ogg' --glob '!**/*.tgz' --glob '!**/*.gz' --glob '!**/*.ctg.z' --glob '!**/*.bcmap'"
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
-  --preview "(coderay {} || cat {}) 2> /dev/null"
+  --preview "(highlight -O ansi -l {} || head -n 500 {}) 2> /dev/null"
+  --preview-window right:35%
 '
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 # source work specific config
 if [[ -s "$HOME/.config/work.bash" ]]; then

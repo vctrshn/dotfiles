@@ -35,10 +35,14 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git/**' --
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
-  --preview "(highlight -O ansi -l {} || head -n 500 {}) 2> /dev/null"
+  --preview "[[ $(file --mime {}) =~ binary ]] &&
+                 echo {} is a binary file ||
+                 (highlight -O ansi -l {} ||
+                  head -500 {}) 2> /dev/null"
   --preview-window right:35%
 '
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_ALT_C_COMMAND='rg --hidden --files --null --glob "!.git/**" --glob "!.hg/**" | xargs -0 dirname | uniq'
 
 # source work specific config
 if [[ -s "$HOME/.config/work.bash" ]]; then

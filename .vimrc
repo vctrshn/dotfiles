@@ -6,7 +6,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -26,9 +25,7 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
 " JS Language Support gets its own support whoop
-" Plug 'othree/yajs.vim', { 'for': ['javascript'] }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin', 'for': ['javascript'] }
-" Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 Plug 'othree/es.next.syntax.vim', { 'for': ['javascript'] }
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
@@ -53,18 +50,13 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'joonty/vdebug'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-conflicted'
 Plug 'jreybert/vimagit'
 Plug 'wincent/vim-clipper'
 
 " Autocomplete/Snippets
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'] }
 Plug 'wokalski/autocomplete-flow', { 'for': ['javascript'] }
-" Plug 'steelsojka/deoplete-flow', { 'for': ['javascript'] }
-" Plug 'zchee/deoplete-go', { 'for': 'go' , 'do': 'make' }
 if (has('nvim'))
   Plug 'roxma/nvim-completion-manager'
   Plug 'roxma/ncm-flow'
@@ -77,17 +69,12 @@ Plug 'othree/csscomplete.vim', { 'for': 'css' }
 Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 
 " Grepping/Linting
-" Plug 'neomake/neomake'
 Plug 'w0rp/ale'
-Plug 'mhinz/vim-grepper'
 Plug 'romainl/vim-qf'
 Plug 'wincent/ferret'
 Plug 'dyng/ctrlsf.vim'
 
 " UI
-Plug 'Shougo/unite.vim' "https://github.com/Shougo/denite.nvim
-"Plug 'Shougo/neoyank.vim'
-Plug 'Shougo/vimfiler.vim'
 Plug 'ap/vim-css-color'
 Plug 'itchyny/lightline.vim'
 Plug 'chrisbra/vim-diff-enhanced'
@@ -351,8 +338,6 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 match ErrorMsg '\s\+$'
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-"autocmd! BufRead,BufWritePost * Neomake
-" autocmd Filetype javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 autocmd Filetype javascript nnoremap <silent> gd :FlowJumpToDef<cr>
 autocmd Filetype javascript nnoremap <silent> gh :FlowType<cr>
 autocmd FileType javascript set formatprg="prettier --stdin --single-quote --trailing-comma es5"
@@ -373,7 +358,7 @@ augroup END
 
 " Open help in a vertical split instead of the default horizontal split
 " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
-cabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
+cnoreabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
 
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -383,14 +368,13 @@ let g:gitgutter_map_keys = 0
 " GitGutterUndoHunk is too hard to type
 cabbrev revert GitGutterUndoHunk
 
-" Grep Stuff
-" Ripgrep hella fast
-cabbrev rg Grepper -tool rg -open -switch
+" CtrlSF Stuff
 let g:ctrlsf_ackprg = '/usr/local/bin/rg'
 let g:ctrlsf_confirm_save = 0
 let g:ctrlsf_indent = 2
 let g:ctrlsf_winsize = '30%'
 
+" Vim-QF config
 let g:qf_mapping_ack_style = 1
 let g:qf_auto_open_quickfix = 0
 let g:qf_auto_open_loclist = 0
@@ -442,40 +426,6 @@ map <silent> <C-w>j :res -5<CR>
 map <silent> <C-w>h :vertical resize -5<CR>
 map <silent> <C-w>l :vertical resize +5<CR>
 
-" let g:neomake_warning_sign={'text': '⚠'}
-" let g:neomake_error_sign={'text': '✗'}
-" let g:neomake_css_enabled_makers = ['csslint']
-" let g:neomake_php_enabled_makers = ['php']
-" let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
-" let g:neomake_eslint_maker = {
-"     \ 'args': ['-f', 'compact', getcwd()],
-"     \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-"     \ '%W%f: line %l\, col %c\, Warning - %m'
-"     \ }
-" let g:neomake_flow_maker = {
-"     \ 'exe': 'flow',
-"     \ 'args': ['--from=vim', '--show-all-errors'],
-"     \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
-"     \ 'postprocess': function('neomake#makers#ft#javascript#FlowProcess')
-"     \ }
-" let g:neomake_flow_maker = {
-"       \ 'exe': 'sh',
-"       \ 'args': ['-c', 'flow --json 2> /dev/null | flow-vim-quickfix'],
-"       \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-"       \ 'cwd': '%:p:h'
-"       \ }
-"
-" let g:neomake_logfile='./.neomake.log'
-" For makers that need to be run at the root directory to be truly effective,
-" ie Flow, set up directory makers for them
-"https://github.com/neomake/neomake/issues/787
-" let g:customFTSettings = ['js', 'qf']
-" Run neomake for all file types except those in customFTSettings (eg. JS)
-" autocmd! BufWritePost * if index(customFTSettings, &ft) < 0 | Neomake
-" Run neomake! for JS files
-" autocmd! BufWritePost *.js Neomake! flow eslint
-
-
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_error = '✗'
 let g:ale_linters = {
@@ -486,7 +436,6 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
-" let g:ale_javascript_flow_executable = 'flow --json 2> /dev/null | flow-vim-quickfix'
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 let g:flow#enable = 0
@@ -500,55 +449,12 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
-" "https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
-" nnoremap <Leader>m :g//#<Left><Left>
-" " make list-like commands more intuitive
-" function! CCR()
-"     let cmdline = getcmdline()
-"     if cmdline =~ '\v\C^(ls|files|buffers)'
-"         " like :ls but prompts for a buffer command
-"         return "\<CR>:b"
-"     elseif cmdline =~ '\v\C/(#|nu|num|numb|numbe|number)$'
-"         " like :g//# but prompts for a command
-"         return "\<CR>:"
-"     elseif cmdline =~ '\v\C^(dli|il)'
-"         " like :dlist or :ilist but prompts for a count for :djump or :ijump
-"         return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
-"     elseif cmdline =~ '\v\C^(cli|lli)'
-"         " like :clist or :llist but prompts for an error/location number
-"         return "\<CR>:sil " . repeat(cmdline[0], 2) . "\<Space>"
-"     elseif cmdline =~ '\C^old'
-"         " like :oldfiles but prompts for an old file to edit
-"         set nomore
-"         return "\<CR>:sil se more|e #<"
-"     elseif cmdline =~ '\C^changes'
-"         " like :changes but prompts for a change to jump to
-"         set nomore
-"         return "\<CR>:sil se more|norm! g;\<S-Left>"
-"     elseif cmdline =~ '\C^ju'
-"         " like :jumps but prompts for a position to jump to
-"         set nomore
-"         return "\<CR>:sil se more|norm! \<C-o>\<S-Left>"
-"     elseif cmdline =~ '\C^marks'
-"         " like :marks but prompts for a mark to jump to
-"         return "\<CR>:norm! `"
-"     elseif cmdline =~ '\C^undol'
-"         " like :undolist but prompts for a change to undo
-"         return "\<CR>:u "
-"     else
-"         return "\<CR>"
-"     endif
-" endfunction
-" " map '<CR>' in command-line mode to execute the function above
-" cnoremap <expr> <CR> CCR()
-
 let g:go_fmt_command = 'goimports'
 let g:go_metalinter_autosave = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " let g:LanguageClient_serverCommands = {
 "   \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],

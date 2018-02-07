@@ -204,24 +204,26 @@ let g:lightline = {
   \ 'colorscheme': 'one',
   \ 'active': {
   \   'left': [['mode', 'paste'], ['path']],
-  \   'right': [['lineinfo'], ['percent'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']]
+  \   'right': [['lineinfo'], ['percent'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']],
   \ },
   \ 'inactive': {
   \   'left': [['path']],
-  \   'right': [['lineinfo'], ['percent'], ['filetype']]
+  \   'right': [],
   \ },
   \ 'component_expand': {
   \   'linter_warnings': 'LightlineLinterWarnings',
   \   'linter_errors': 'LightlineLinterErrors',
-  \   'linter_ok': 'LightlineLinterOK'
+  \   'linter_ok': 'LightlineLinterOK',
   \ },
   \ 'component_function': {
   \   'mode': 'LightlineMode',
-  \   'path': 'LightlinePath'
+  \   'path': 'LightlinePath',
+  \   'lineinfo': 'LightlineLineInfo',
+  \   'filetype': 'LightlineFiletype',
   \ },
   \ 'component_type': {
   \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error'
+  \   'linter_errors': 'error',
   \ }
 \ }
 function! LightlineLinterWarnings() abort
@@ -238,40 +240,56 @@ function! LightlineLinterOK() abort
   let counts = ale#statusline#Count(bufnr(''))
   return counts.total == 0 ? '✓ ' : ''
 endfunction
-function! LightlineMode()
-  return &filetype ==# 'fzf' ? 'FZF' : lightline#mode()
+function! LightlineMode() abort
+  let full_mode = &filetype ==# 'fzf' ? 'FZF' : lightline#mode()
+  let win_width = winwidth(0)
+  if win_width > 100
+    return full_mode
+  endif
+
+  return strpart(full_mode, 0, 1)
 endfunction
 " This is so that the crazy command fzf.vim runs to populate the fzf window
 " doesn't show up as the path
-function! LightlinePath()
+function! LightlinePath() abort
   if &filetype ==# 'fzf'
-    return 'fzf'
+    return ''
   endif
 
   let full_path = expand('%')
-  if winwidth(0) > 100
+  let win_width = winwidth(0)
+  if win_width > 100 || len(full_path) < win_width - 20 " arbitary best guess for total width of other sections
     return full_path
-  else
-    let name = ''
-    let subs = split(full_path, '/')
-    if len(subs) == 1
-      return full_path
-    endif
-
-    let i = 1
-    for s in subs
-      let parent = name
-      if i == len(subs)
-        let name = parent . '/' . s
-      elseif i == 1
-        let name = s
-      else
-        let name = parent . '/' . strpart(s, 0, 2)
-      endif
-      let i += 1
-    endfor
-    return name
   endif
+
+  let subs = split(full_path, '/')
+  if len(subs) == 1
+    return full_path
+  endif
+
+  let name = ''
+  let i = 1
+  for s in subs
+    let parent = name
+    if i == len(subs)
+      let name = parent . '/' . s
+    elseif i == 1
+      let name = s
+    else
+      let name = parent . '/' . strpart(s, 0, 2)
+    endif
+    let i += 1
+  endfor
+  return name
+endfunction
+function! LightlineLineInfo() abort
+  return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') : ''
+endfunction
+function! LightlineFiletype() abort
+  let custom_file_extensions = {
+  \   'javascript': 'js',
+  \ }
+  return has_key(custom_file_extensions, &ft) ? custom_file_extensions[&ft] : &ft
 endfunction
 autocmd User ALELint call lightline#update()
 

@@ -89,9 +89,7 @@ Plug 'Shougo/unite.vim' "https://github.com/Shougo/denite.nvim
 "Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'ap/vim-css-color'
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'equalsraf/neovim-gui-shim'
@@ -212,32 +210,83 @@ vnoremap <silent> <leader>s :'<, '>sort i<CR>
 set formatoptions+=j
 
 " Status line stuff
+set noshowmode
 set laststatus=2
 set statusline=%f
-set statusline+=%{fugitive#statusline()}
-set statusline+=%{ConflictedVersion()}
-" More status line(airline) stuff
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_theme = 'onedark'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#whitespace#show_message = 0
-" Remove encoding
-let g:airline_section_y = ''
-" Remove percentage/line#/col#
-let g:airline_section_z = ''
-" Better usage of tabline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:lightline = {
+  \ 'colorscheme': 'one',
+  \ 'active': {
+  \   'left': [['mode', 'paste'], ['path']],
+  \   'right': [['lineinfo'], ['percent'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']]
+  \ },
+  \ 'inactive': {
+  \   'left': [['path']],
+  \   'right': [['lineinfo'], ['percent'], ['filetype']]
+  \ },
+  \ 'component_expand': {
+  \   'linter_warnings': 'LightlineLinterWarnings',
+  \   'linter_errors': 'LightlineLinterErrors',
+  \   'linter_ok': 'LightlineLinterOK'
+  \ },
+  \ 'component_function': {
+  \   'mode': 'LightlineMode',
+  \   'path': 'LightlinePath'
+  \ },
+  \ 'component_type': {
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error'
+  \ }
+\ }
+function! LightlineLinterWarnings() abort
+  let counts = ale#statusline#Count(bufnr(''))
+  let warnings_count = counts.warning + counts.style_warning + counts.info
+  return warnings_count == 0 ? '' : printf('%d ⚠ ', warnings_count)
+endfunction
+function! LightlineLinterErrors() abort
+  let counts = ale#statusline#Count(bufnr(''))
+  let errors_count = counts.error + counts.style_error
+  return errors_count == 0 ? '' : printf('%d ✗', errors_count)
+endfunction
+function! LightlineLinterOK() abort
+  let counts = ale#statusline#Count(bufnr(''))
+  return counts.total == 0 ? '✓ ' : ''
+endfunction
+function! LightlineMode()
+  return &filetype ==# 'fzf' ? 'FZF' : lightline#mode()
+endfunction
+" This is so that the crazy command fzf.vim runs to populate the fzf window
+" doesn't show up as the path
+function! LightlinePath()
+  if &filetype ==# 'fzf'
+    return 'fzf'
+  endif
+
+  let full_path = expand('%')
+  if winwidth(0) > 100
+    return full_path
+  else
+    let name = ''
+    let subs = split(full_path, '/')
+    if len(subs) == 1
+      return full_path
+    endif
+
+    let i = 1
+    for s in subs
+      let parent = name
+      if i == len(subs)
+        let name = parent . '/' . s
+      elseif i == 1
+        let name = s
+      else
+        let name = parent . '/' . strpart(s, 0, 2)
+      endif
+      let i += 1
+    endfor
+    return name
+  endif
+endfunction
+autocmd User ALELint call lightline#update()
 
 " Map leader key
 let g:mapleader = ' '
@@ -432,7 +481,6 @@ let g:ale_sign_error = '✗'
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \}
-let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -444,7 +492,6 @@ nmap <silent> <C-e> <Plug>(ale_next_wrap)
 let g:flow#enable = 0
 let g:flow#omnifunc = 0
 let g:flow#showquickfix = 0
-
 
 let g:user_emmet_leader_key='<C-E>'
 let g:user_emmet_mode='i'

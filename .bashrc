@@ -1,10 +1,4 @@
 set -o vi
-# Iterm2 escape sequence hack to set the title bar color to be the same as the
-# rest of the background
-# https://www.felixjung.io/posts/custom-iterm2-titlebar-background-colors
-echo -e "\033]6;1;bg;red;brightness;40\a"
-echo -e "\033]6;1;bg;green;brightness;44\a"
-echo -e "\033]6;1;bg;blue;brightness;52\a"
 
 alias ga='git add'
 alias gc='git commit'

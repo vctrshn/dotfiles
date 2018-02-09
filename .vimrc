@@ -205,7 +205,6 @@ set formatoptions+=j
 " Status line stuff
 set noshowmode
 set laststatus=2
-set statusline=%f
 let g:lightline = {
   \ 'colorscheme': 'one',
   \ 'active': {
@@ -289,7 +288,7 @@ function! LightlinePath() abort
   return name
 endfunction
 function! LightlineLineInfo() abort
-  return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') . '/' . line('$') : ''
+  return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') . '|' . line('$') : ''
 endfunction
 function! LightlineFiletype() abort
   let custom_file_extensions = {

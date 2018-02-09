@@ -1,4 +1,11 @@
-source ~/.work.before.vimrc
+" https://devel.tech/snippets/n/vIIMz8vZ/load-vim-source-files-only-if-it-exists/
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+call SourceIfExists("~/.work.before.vimrc")
 call plug#begin('~/.vim/plugged')
 
 " Essentials
@@ -479,4 +486,4 @@ let g:LanguageClient_serverCommands = {
   \ }
 let g:LanguageClient_autoStart = 1
 
-source ~/.work.after.vimrc
+call SourceIfExists("~/.work.after.vimrc")

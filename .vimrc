@@ -56,7 +56,6 @@ Plug 'jreybert/vimagit'
 Plug 'wincent/vim-clipper'
 
 " Autocomplete/Snippets
-Plug 'wokalski/autocomplete-flow', { 'for': ['javascript'] }
 if (has('nvim'))
   Plug 'roxma/nvim-completion-manager'
   Plug 'roxma/ncm-flow'

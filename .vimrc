@@ -204,7 +204,7 @@ let g:lightline = {
   \ 'colorscheme': 'one',
   \ 'active': {
   \   'left': [['mode', 'paste'], ['path']],
-  \   'right': [['lineinfo'], ['percent'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']],
+  \   'right': [['lineinfo'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']],
   \ },
   \ 'inactive': {
   \   'left': [['path']],
@@ -283,7 +283,7 @@ function! LightlinePath() abort
   return name
 endfunction
 function! LightlineLineInfo() abort
-  return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') : ''
+  return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') . '/' . line('$') : ''
 endfunction
 function! LightlineFiletype() abort
   let custom_file_extensions = {

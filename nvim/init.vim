@@ -1,4 +1,3 @@
-source ~/.vimrc
 let g:python3_host_prog='/usr/local/bin/python3'
 
 " Live preview of substitution command
@@ -12,3 +11,5 @@ tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 autocmd TermOpen * setlocal nonumber
+
+source ~/.vimrc

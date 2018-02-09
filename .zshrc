@@ -50,7 +50,7 @@ alias rebase='git fetch origin && git rebase origin/master'
 
 # convenience aliases for editing configs
 alias ev='vim ~/.vimrc'
-alias et='vim ~/.tmux.conf'
+alias etu='vim ~/.tmux.conf'
 alias ez='vim ~/.zshrc'
 alias ew='vim ~/.config/work.zsh'
 
@@ -84,7 +84,6 @@ alias show='git show --pretty="format:" $(git show --pretty="format:" --name-onl
 alias undo='git checkout -- $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
 
 # tmuxinator aliases
-alias etu='cd ~/.tmuxinator; vim'
 alias dtop='tmux attach-session -d -t desktop'
 alias ltop='tmux attach-session -d -t laptop'
 alias desktop='mux desktop && dtop'

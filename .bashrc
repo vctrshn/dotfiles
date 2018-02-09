@@ -24,7 +24,7 @@ alias clip="nc localhost 8377"
 # convenience aliases for editing configs
 alias eb='vim ~/.bashrc'
 alias ev='vim ~/.vimrc'
-alias et='vim ~/.tmux.conf'
+alias etu='vim ~/.tmux.conf'
 alias ew='vim ~/.config/work.bash'
 
 # reload this config file

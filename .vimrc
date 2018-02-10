@@ -267,6 +267,10 @@ function! LightlinePath() abort
   endif
 
   let full_path = expand('%')
+  if full_path ==? ''
+    return getcwd()
+  endif
+
   let win_width = winwidth(0)
   if win_width > 100 || len(full_path) < win_width - 20 " arbitary best guess for total width of other sections
     return full_path

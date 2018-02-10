@@ -41,7 +41,6 @@ Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
 " Language Support
-" Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json'
@@ -390,15 +389,6 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 " Template file syntax highlighting
 autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
 autocmd Filetype html,javascript EmmetInstall
-
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-endfunction
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
 
 " Open help in a vertical split instead of the default horizontal split
 " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev

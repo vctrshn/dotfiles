@@ -110,7 +110,6 @@ if (has('guicursor'))
 endif
 colorscheme one
 
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " Use Unix as the standard file type
@@ -175,6 +174,8 @@ set ttimeout
 set ttimeoutlen=50
 " Disable syntax highlighting after first 200 chars in a line
 set synmaxcol=200
+" Nobody has time for hightlighting matched parens
+set noshowmatch
 
 " Autocomplete options
 set completeopt=menu,noinsert,menuone,noselect
@@ -182,6 +183,9 @@ set completeopt-=preview
 
 " Tags file
 set tags=tags
+
+" Map leader key to space
+let g:mapleader = ' '
 
 " Better pasting
 " Mapping to copy to system clipboard
@@ -194,8 +198,9 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Sorting inside of curly braces and paragraphs
-nnoremap <silent> <leader>sc vi{:'<, '>sort i<CR>
-nnoremap <silent> <leader>sp vip:'<, '>sort i<CR>
+nnoremap <silent> <leader>c vi{:'<, '>sort i<CR>
+nnoremap <silent> <leader>p vip:'<, '>sort i<CR>
+nnoremap <silent> <leader>i vip:'<, '>sort /.\{-}\(require\|from\)/ i<CR>
 " Visual mode sorting of selection
 vnoremap <silent> <leader>s :'<, '>sort i<CR>
 
@@ -298,9 +303,6 @@ function! LightlineFiletype() abort
 endfunction
 autocmd User ALELint call lightline#update()
 
-" Map leader key
-let g:mapleader = ' '
-
 " Vim-Sneak config
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
@@ -326,12 +328,9 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-noremap <silent><expr> <Leader>/ incsearch#go(<SID>config_easyfuzzymotion())
+nnoremap <silent><expr> <leader>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Easymotion config
-map <Leader> <Plug>(easymotion-prefix)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 let g:EasyMotion_startofline = 1
 let g:EasyMotion_smartcase = 1
 
@@ -384,7 +383,7 @@ augroup END
 cnoreabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
 
 " Allow saving of files as sudo when forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 
 " Disable all GitGutter mappings, since signify seems to work better
 let g:gitgutter_map_keys = 0
@@ -429,8 +428,8 @@ nnoremap <expr> <C-g> (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
 " Buffer manipulation
 " Close buffers without closing splits
 nnoremap <C-c> :bp\|bd #<CR>
-nnoremap <Leader>h :bp <CR>
-nnoremap <Leader>l :bn <CR>
+nnoremap <leader>h :bp <CR>
+nnoremap <leader>l :bn <CR>
 
 " Map jk to exit insert mode
 inoremap jk <Esc>
@@ -441,13 +440,13 @@ inoremap ,, <Esc>A,<Esc>
 let g:tmux_navigator_save_on_switch = 1
 
 " Create splits using C+w+- and C+w+|
-map <silent> <C-w>- :sp<CR>
-map <silent> <C-w>\| :vsp<CR>
+nnoremap <silent> <C-w>- :sp<CR>
+nnoremap <silent> <C-w>\| :vsp<CR>
 " Resizing windows
-map <silent> <C-w>k :res +5<CR>
-map <silent> <C-w>j :res -5<CR>
-map <silent> <C-w>h :vertical resize -5<CR>
-map <silent> <C-w>l :vertical resize +5<CR>
+nnoremap <silent> <C-w>k :res +5<CR>
+nnoremap <silent> <C-w>j :res -5<CR>
+nnoremap <silent> <C-w>h :vertical resize -5<CR>
+nnoremap <silent> <C-w>l :vertical resize +5<CR>
 
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_error = '✗'
@@ -465,7 +464,7 @@ let g:flow#enable = 0
 let g:flow#omnifunc = 0
 let g:flow#showquickfix = 0
 
-let g:user_emmet_leader_key='<C-E>'
+let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='i'
 
 let g:multi_cursor_next_key='<C-n>'

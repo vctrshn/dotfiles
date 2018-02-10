@@ -213,7 +213,7 @@ set laststatus=2
 let g:lightline = {
   \ 'colorscheme': 'one',
   \ 'active': {
-  \   'left': [['mode', 'paste'], ['path']],
+  \   'left': [['mode'], ['path']],
   \   'right': [['lineinfo'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']],
   \ },
   \ 'inactive': {
@@ -236,33 +236,50 @@ let g:lightline = {
   \   'linter_errors': 'error',
   \ }
 \ }
+function! CanLeftSideExpand(mode, path) abort
+  let win_width = winwidth(0)
+  " arbitary best guess for total width of other sections
+  return len(a:mode) + len(a:path) < win_width - 20
+endfunction
+
 function! LightlineLinterWarnings() abort
   let counts = ale#statusline#Count(bufnr(''))
   let warnings_count = counts.warning + counts.style_warning + counts.info
   return warnings_count == 0 ? '' : printf('%d ⚠ ', warnings_count)
 endfunction
+
 function! LightlineLinterErrors() abort
   let counts = ale#statusline#Count(bufnr(''))
   let errors_count = counts.error + counts.style_error
   return errors_count == 0 ? '' : printf('%d ✗', errors_count)
 endfunction
+
 function! LightlineLinterOK() abort
   let counts = ale#statusline#Count(bufnr(''))
   return counts.total == 0 ? '✓ ' : ''
 endfunction
+
 function! LightlineMode() abort
-  let full_mode = &filetype ==# 'fzf' ? 'FZF' : lightline#mode()
+  if &filetype ==? 'fzf'
+    return 'FZF'
+  endif
+
+  let full_mode = lightline#mode()
   let win_width = winwidth(0)
-  if win_width > 100
+  let full_path = expand('%')
+  if CanLeftSideExpand(full_mode, full_path)
     return full_mode
   endif
 
+  " Shrink the mode display to just a single character if the full path does
+  " not fit in the remaining space of the statusline
   return strpart(full_mode, 0, 1)
 endfunction
-" This is so that the crazy command fzf.vim runs to populate the fzf window
-" doesn't show up as the path
+
 function! LightlinePath() abort
-  if &filetype ==# 'fzf'
+  " This is so that the crazy commands fzf.vim runs to populate the fzf window
+  " doesn't show up as the path
+  if &filetype ==? 'fzf'
     return ''
   endif
 
@@ -272,39 +289,46 @@ function! LightlinePath() abort
   endif
 
   let win_width = winwidth(0)
-  if win_width > 100 || len(full_path) < win_width - 20 " arbitary best guess for total width of other sections
+  let mode = LightlineMode()
+  if CanLeftSideExpand(mode, full_path)
     return full_path
   endif
 
+  " Truncate the path to fit inside of the remaining space
+  let max_len = win_width - 20
+  let full_len = len(full_path)
   let subs = split(full_path, '/')
-  if len(subs) == 1
-    return full_path
+  " If even the filename doesn't fit inside of the space, we're out of luck
+  let filename = subs[-1]
+  if len(filename) > max_len
+    return '…' . strpart(filename, 2)
   endif
 
-  let name = ''
-  let i = 1
-  for s in subs
-    let parent = name
-    if i == len(subs)
-      let name = parent . '/' . s
-    elseif i == 1
-      let name = s
-    else
-      let name = parent . '/' . strpart(s, 0, 2)
+  " Build up the pathstring backwards, starting with the most specific dirs
+  let path = filename
+  let i = -2
+  while len(path) < max_len && i > -1 * len(subs)
+    let path = subs[i] . '/' . path
+    if len(path) >= max_len
+      let len_diff = len(path) - max_len
+      return '…' . strpart(path, 2 + len_diff)
     endif
-    let i += 1
-  endfor
-  return name
+    let i -= 1
+  endwhile
+  return path
 endfunction
+
 function! LightlineLineInfo() abort
   return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') . '|' . line('$') : ''
 endfunction
+
 function! LightlineFiletype() abort
   let custom_file_extensions = {
   \   'javascript': 'js',
   \ }
   return has_key(custom_file_extensions, &ft) ? custom_file_extensions[&ft] : &ft
 endfunction
+
 autocmd User ALELint call lightline#update()
 
 " Vim-Sneak config

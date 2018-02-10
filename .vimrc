@@ -472,6 +472,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
+let g:prettier#exec_cmd_async = 1
+
 let g:flow#enable = 0
 let g:flow#omnifunc = 0
 let g:flow#showquickfix = 0

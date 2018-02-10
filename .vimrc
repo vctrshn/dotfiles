@@ -362,8 +362,6 @@ match ErrorMsg '\s\+$'
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd Filetype javascript nnoremap <silent> gd :FlowJumpToDef<cr>
 autocmd Filetype javascript nnoremap <silent> gh :FlowType<cr>
-autocmd FileType javascript set formatprg="prettier --stdin --single-quote --trailing-comma es5"
-autocmd FileType json set formatprg="prettier --parser json --stdin --single-quote --trailing-comma es5"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 " Template file syntax highlighting
 autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html

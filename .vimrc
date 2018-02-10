@@ -32,11 +32,11 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
 " JS Language Support gets its own support whoop
-Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin', 'for': ['javascript'] }
+Plug 'flowtype/vim-flow', { 'for': ['javascript'] }
 Plug 'othree/es.next.syntax.vim', { 'for': ['javascript'] }
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'npm install', 'for': ['javascript'] }
+Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'yarn install', 'for': ['javascript'] }
 Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
@@ -45,7 +45,7 @@ Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'tmux-plugins/vim-tmux'
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'mxw/vim-xhp'

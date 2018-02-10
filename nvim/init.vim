@@ -20,7 +20,6 @@ autocmd TermOpen * setlocal nonumber
 "   set wildcharm=<C-z>
 "   cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>/<C-r>/" : "<C-z>"
 "   cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>?<C-r>/" : "<S-Tab>"
-"   nnoremap <Esc><Esc> :nohlsearch<CR>
 " endif
 " </Pending>
 source ~/.vimrc

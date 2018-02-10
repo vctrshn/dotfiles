@@ -308,19 +308,18 @@ let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
 
 " Incsearch.vim config
+nnoremap <Esc><Esc> :nohlsearch<CR>
 let g:incsearch#auto_nohlsearch = 1
-nmap /  <Plug>(incsearch-forward)
-nmap ?  <Plug>(incsearch-backward)
-nmap n  <Plug>(incsearch-nohl-n)
-nmap N  <Plug>(incsearch-nohl-N)
-nmap *  <Plug>(incsearch-nohl-*)
-nmap #  <Plug>(incsearch-nohl-#)
-" incsearch.vim x fuzzy x vim-easymotion
+nmap / <Plug>(incsearch-forward)
+nmap ? <Plug>(incsearch-backward)
+" incsearch.vim x fuzzy x fuzzyspell x vim-easymotion
+" Bind Ctrl-C to actually initiate the easymotion, so that <CR> can just confirm
+" the current result
 function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
   \   'converters': [incsearch#config#fuzzy#converter()],
   \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'keymap': {"\<C-c>": '<Over>(easymotion)'},
   \   'is_expr': 0,
   \   'is_stay': 1
   \ }), get(a:, 1, {}))

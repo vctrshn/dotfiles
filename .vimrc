@@ -200,7 +200,7 @@ vnoremap K :m '<-2<CR>gv=gv
 " Sorting inside of curly braces and paragraphs
 nnoremap <silent> <leader>c vi{:'<, '>sort i<CR>
 nnoremap <silent> <leader>p vip:'<, '>sort i<CR>
-nnoremap <silent> <leader>i vip:'<, '>sort /.\{-}\(require\|from\)/ i<CR>
+nnoremap <silent> <leader>i vip:'<, '>sort /.\{-}\(require\\|from\)/ i<CR>
 " Visual mode sorting of selection
 vnoremap <silent> <leader>s :'<, '>sort i<CR>
 

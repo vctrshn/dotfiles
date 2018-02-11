@@ -10,7 +10,10 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
-autocmd TermOpen * setlocal nonumber
+augroup terminal
+  autocmd!
+  autocmd TermOpen * setlocal nonumber
+augroup end
 " <Pending>: this gets pretty far along the way to replacing the small subset of
 " incsearch.vim that is actually used. If only neovim had support for <C-g>
 " and <C-t> :( https://github.com/neovim/neovim/issues/5525

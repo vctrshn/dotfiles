@@ -327,8 +327,10 @@ function! LightlineFiletype() abort
   \ }
   return has_key(custom_file_extensions, &ft) ? custom_file_extensions[&ft] : &ft
 endfunction
-
-autocmd User ALELint call lightline#update()
+augroup lightline
+  autocmd!
+  autocmd User ALELint call lightline#update()
+augroup END
 
 " Vim-Sneak config
 let g:sneak#s_next = 1
@@ -382,13 +384,25 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 " Highlight trailing whitespace with error
 match ErrorMsg '\s\+$'
 " Remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-autocmd Filetype javascript nnoremap <silent> gd :FlowJumpToDef<cr>
-autocmd Filetype javascript nnoremap <silent> gh :FlowType<cr>
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
-" Template file syntax highlighting
-autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
-autocmd Filetype html,javascript EmmetInstall
+augroup trimwhitespace
+  autocmd!
+  autocmd BufWritePre * :%s/\s\+$//e
+augroup end
+augroup frontend
+  autocmd!
+  autocmd Filetype javascript nnoremap <buffer> gd :FlowJumpToDef<cr>
+  autocmd Filetype javascript nnoremap <buffer> gh :FlowType<cr>
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+  autocmd Filetype html,javascript EmmetInstall
+augroup end
+augroup php
+  autocmd!
+  autocmd BufNewFile,BufRead *.php setlocal omnifunc=hackcomplete#Complete
+  autocmd Filetype php nnoremap <buffer> gd :HackGotoDef<cr>
+  autocmd Filetype php nnoremap <buffer> gh :HackType<cr>
+  " Template file syntax highlighting
+  autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
+augroup end
 
 " Open help in a vertical split instead of the default horizontal split
 " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev

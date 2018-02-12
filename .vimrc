@@ -43,14 +43,14 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typ
 " Language Support
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'elzr/vim-json'
-Plug 'othree/html5.vim'
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'othree/html5.vim', { 'for': 'html' }
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
-Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
-Plug 'mxw/vim-xhp'
-Plug 'hhvm/vim-hack'
-Plug 'reasonml-editor/vim-reason-plus'
+Plug 'mxw/vim-xhp', { 'for': 'php' }
+Plug 'hhvm/vim-hack', { 'for': 'php' }
+Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 
 " Integrations
 Plug 'airblade/vim-gitgutter'
@@ -64,12 +64,13 @@ Plug 'wincent/vim-clipper'
 " Autocomplete/Snippets
 if (has('nvim'))
   Plug 'roxma/nvim-completion-manager'
+  Plug 'calebeby/ncm-css'
   Plug 'roxma/ncm-flow'
   Plug 'roxma/nvim-cm-tern'
 endif
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript']}
 Plug 'othree/csscomplete.vim', { 'for': 'css' }
 Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 

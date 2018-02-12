@@ -14,15 +14,4 @@ augroup terminal
   autocmd!
   autocmd TermOpen * setlocal nonumber
 augroup end
-" <Pending>: this gets pretty far along the way to replacing the small subset of
-" incsearch.vim that is actually used. If only neovim had support for <C-g>
-" and <C-t> :( https://github.com/neovim/neovim/issues/5525
-" https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs
-" if has('nvim')
-"   " needed for mapping <Tab> in command-line mode
-"   set wildcharm=<C-z>
-"   cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>/<C-r>/" : "<C-z>"
-"   cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>?<C-r>/" : "<S-Tab>"
-" endif
-" </Pending>
 source ~/.vimrc

@@ -340,8 +340,17 @@ let g:sneak#use_ic_scs = 1
 " Incsearch.vim config
 nnoremap <Esc><Esc> :nohlsearch<CR>
 let g:incsearch#auto_nohlsearch = 1
-nmap / <Plug>(incsearch-forward)
-nmap ? <Plug>(incsearch-backward)
+" <Pending>: this gets pretty far along the way to replacing the small subset of
+" incsearch.vim that is actually used. If only neovim had support for <C-g>
+" and <C-t> :( https://github.com/neovim/neovim/issues/5525
+" https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs
+" nmap / <Plug>(incsearch-forward)
+" nmap ? <Plug>(incsearch-backward)
+" needed for mapping <Tab> in command-line mode
+set wildcharm=<C-z>
+cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>/<C-r>/" : "<C-z>"
+cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>?<C-r>/" : "<S-Tab>"
+" </Pending>
 " incsearch.vim x fuzzy x fuzzyspell x vim-easymotion
 " Bind Ctrl-C to actually initiate the easymotion, so that <CR> can just confirm
 " the current result
@@ -349,7 +358,7 @@ function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
   \   'converters': [incsearch#config#fuzzy#converter()],
   \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<C-c>": '<Over>(easymotion)'},
+  \   'keymap': {"\<C-c>": '<Over>(easymotion)', "\<Esc>": '<Over>(easymotion)'},
   \   'is_expr': 0,
   \   'is_stay': 1
   \ }), get(a:, 1, {}))

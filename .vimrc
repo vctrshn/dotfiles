@@ -301,7 +301,7 @@ function! LightlinePath() abort
   " If even the filename doesn't fit inside of the space, we're out of luck
   let filename = subs[-1]
   if len(filename) > max_len
-    return '…' . strpart(filename, 2)
+    return '…' . strpart(filename, 3)
   endif
 
   " Build up the pathstring backwards, starting with the most specific dirs
@@ -311,7 +311,7 @@ function! LightlinePath() abort
     let path = subs[i] . '/' . path
     if len(path) >= max_len
       let len_diff = len(path) - max_len
-      return '…' . strpart(path, 2 + len_diff)
+      return '…' . strpart(path, 3 + len_diff)
     endif
     let i -= 1
   endwhile

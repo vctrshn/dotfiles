@@ -459,7 +459,9 @@ nnoremap <C-t> :GitFiles<cr>
 nnoremap <C-p> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
 nnoremap <C-f> :BLines<cr>
-nnoremap <expr> <C-g> (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
+nnoremap <C-g> :Rg<space>
+nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
+vnoremap <leader>g "zy:exe "Rg ".@z.""<CR>
 
 " Buffer manipulation
 " Close buffers without closing splits

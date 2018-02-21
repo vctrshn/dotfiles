@@ -5,7 +5,7 @@ function! SourceIfExists(file)
   endif
 endfunction
 
-call SourceIfExists("~/.work.before.vimrc")
+call SourceIfExists('~/.work.before.vimrc')
 call plug#begin('~/.vim/plugged')
 
 " Essentials
@@ -62,12 +62,6 @@ Plug 'jreybert/vimagit'
 Plug 'wincent/vim-clipper'
 
 " Autocomplete/Snippets
-if (has('nvim'))
-  Plug 'roxma/nvim-completion-manager'
-  Plug 'calebeby/ncm-css'
-  Plug 'roxma/ncm-flow'
-  Plug 'roxma/nvim-cm-tern'
-endif
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript']}
@@ -85,7 +79,6 @@ Plug 'ap/vim-css-color'
 Plug 'itchyny/lightline.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'dhruvasagar/vim-zoom'
-Plug 'equalsraf/neovim-gui-shim'
 
 " Colorschemes
 Plug 'joshdick/onedark.vim'
@@ -93,7 +86,11 @@ Plug 'rakr/vim-one'
 
 " Pending
 Plug 'wincent/terminus'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
+" Neovim only plugins
+if (has('nvim'))
+  call SourceIfExists('~/.nvim-plugins.vimrc')
+endif
 
 call plug#end()
 
@@ -524,4 +521,4 @@ let g:LanguageClient_serverCommands = {
   \ }
 let g:LanguageClient_autoStart = 1
 
-call SourceIfExists("~/.work.after.vimrc")
+call SourceIfExists('~/.work.after.vimrc')

@@ -92,6 +92,9 @@ if (has('nvim'))
   call SourceIfExists('~/.nvim-plugins.vimrc')
 endif
 
+" Work specific plugins
+call SourceIfExists('~/.work-plugins.vimrc')
+
 call plug#end()
 
 filetype plugin indent on

@@ -1,4 +1,10 @@
 set -o vi
+# Better handling of bash history
+# https://cdaddr.com/programming/keeping-bash-history-in-sync-on-disk-and-between-multiple-terminals/
+shopt -s histappend
+HISTSIZE=130000
+HISTFILESIZE=-1
+export PROMPT_COMMAND="history -a; history -n;${PROMPT_COMMAND}"
 
 alias ga='git add'
 alias gc='git commit'

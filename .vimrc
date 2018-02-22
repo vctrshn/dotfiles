@@ -460,6 +460,7 @@ nnoremap <C-p> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
 nnoremap <C-f> :BLines<cr>
 nnoremap <C-g> :Rg<space>
+nnoremap <leader>; :Commands<cr>
 nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
 vnoremap <leader>g "zy:exe "Rg ".@z.""<CR>
 

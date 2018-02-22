@@ -540,10 +540,4 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 
-let g:LanguageClient_serverCommands = {
-  \ 'reason': ['ocaml-language-server', '--stdio'],
-  \ 'ocaml': ['ocaml-language-server', '--stdio'],
-  \ }
-let g:LanguageClient_autoStart = 1
-
 call SourceIfExists('~/.work.after.vimrc')

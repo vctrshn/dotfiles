@@ -33,11 +33,12 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 
 " JS Language Support gets its own support whoop
 Plug 'flowtype/vim-flow', { 'for': ['javascript'] }
-Plug 'othree/es.next.syntax.vim', { 'for': ['javascript'] }
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'othree/es.next.syntax.vim', { 'for': ['javascript'] }
+" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'yarn install', 'for': ['javascript'] }
-Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
+" Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
 " Language Support
@@ -328,6 +329,7 @@ endfunction
 function! LightlineFiletype() abort
   let custom_file_extensions = {
   \   'javascript': 'js',
+  \   'javascript.jsx': 'js',
   \ }
   return has_key(custom_file_extensions, &ft) ? custom_file_extensions[&ft] : &ft
 endfunction
@@ -407,6 +409,7 @@ augroup frontend
   autocmd Filetype javascript nnoremap <buffer> gh :FlowType<cr>
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
   autocmd Filetype html,javascript EmmetInstall
+  autocmd BufRead,BufNewFile *.flow set filetype=javascript
 augroup end
 augroup php
   autocmd!

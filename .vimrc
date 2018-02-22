@@ -187,6 +187,9 @@ set tags=tags
 " Map leader key to space
 let g:mapleader = ' '
 
+" Reload vimrc with <leader>e
+nnoremap <leader>e :source $MYVIMRC<cr>
+
 " Better pasting
 " Mapping to copy to system clipboard
 vnoremap <C-c> "+y

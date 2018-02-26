@@ -1,10 +1,28 @@
+function build_prompt() {
+  # https://misc.flogisoft.com/bash/tip_colors_and_formatting
+  local GREEN="\[\e[38;5;10m\]"
+  local RED="\[\e[38;5;1m\]"
+  local BLUE="\[\e[38;5;12m\]"
+  local PURPLE="\[\e[38;5;13m\]"
+  local YELLOW="\[\e[38;5;3m\]"
+  local RESET="\[\e[0m\]"
+
+# Keeping unindented because it's whitespace-sensitive
+PS1="\
+[${RED}\${PIPESTATUS[@]/#0/${RESET}${GREEN}0${RED}}${RESET}]\
+${BLUE}\u@\h:${PURPLE}\w\n\
+${RED}❯${YELLOW}❯${GREEN}❯\
+${RESET} "
+}
+build_prompt
+
 set -o vi
 # Better handling of bash history
 # https://cdaddr.com/programming/keeping-bash-history-in-sync-on-disk-and-between-multiple-terminals/
 shopt -s histappend
 HISTSIZE=130000
 HISTFILESIZE=-1
-export PROMPT_COMMAND="history -a; history -n;${PROMPT_COMMAND}"
+export PROMPT_COMMAND="history -a; history -n"
 
 alias ga='git add'
 alias gc='git commit'

@@ -39,7 +39,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'yarn install', 'for': ['javascript'] }
 " Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
 " Language Support
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
@@ -506,14 +506,17 @@ let g:ale_sign_error = '✗'
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \}
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'javascript.jsx': ['prettier'],
+\}
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] [%code%] [%severity%] %s'
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_fix_on_save = 1
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
-
-let g:prettier#exec_cmd_async = 1
 
 let g:flow#enable = 0
 let g:flow#omnifunc = 0

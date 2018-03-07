@@ -72,3 +72,5 @@ export FZF_ALT_C_COMMAND='rg --hidden --files --null --glob "!.git/**" --glob "!
 if [[ -s "$HOME/.config/work.bash" ]]; then
   source ~/.config/work.bash
 fi
+
+export PATH="$PATH:/usr/local/bin:/Users/vshen/homebrew/bin"

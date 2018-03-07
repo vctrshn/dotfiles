@@ -350,8 +350,13 @@ augroup END
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
 
-" Incsearch.vim config
+" Search-relatd settings and mappings
 nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap * *zz
+nnoremap # #zz
+nnoremap n nzz
+nnoremap N Nzz
+" Incsearch.vim config
 let g:incsearch#auto_nohlsearch = 1
 " <Pending>: this gets pretty far along the way to replacing the small subset of
 " incsearch.vim that is actually used. If only neovim had support for <C-g>

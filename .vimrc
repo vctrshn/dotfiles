@@ -118,6 +118,7 @@ if (has('guicursor'))
     set guicursor
 endif
 colorscheme one
+call one#highlight('jsObjectProp', '98c379', '', '')
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -173,8 +174,6 @@ set splitbelow splitright
 set colorcolumn=81
 " Set color of vertical split border
 set fillchars+=vert:\|
-" Set highlighting of current line
-set cursorline
 
 " Perf stuff
 set lazyredraw
@@ -356,6 +355,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap <leader>z :%s/<C-r><C-w>//g<Left><Left>
 " Incsearch.vim config
 let g:incsearch#auto_nohlsearch = 1
 " <Pending>: this gets pretty far along the way to replacing the small subset of
@@ -400,8 +400,7 @@ nnoremap : ;
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-" Always append trailing commas when using argwrap
-let g:argwrap_tail_comma = 1
+let g:argwrap_tail_comma = 0
 nnoremap <silent> <leader>q :ArgWrap<CR>
 
 " Default selection order starts from the bottom of the completion list,

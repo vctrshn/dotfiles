@@ -9,7 +9,7 @@ function build_prompt() {
 
 # Keeping unindented because it's whitespace-sensitive
 PS1="\
-[${RED}\${PIPESTATUS[@]/#0/${RESET}${GREEN}0${RED}}${RESET}]\
+[${RED}\${PIPESTATUS[@]/#0/${RESET}${GREEN}0${RED}}${RESET}] \
 ${BLUE}\u@\h:${PURPLE}\w\n\
 ${RED}❯${YELLOW}❯${GREEN}❯\
 ${RESET} "

@@ -248,6 +248,10 @@ let g:lightline = {
   \ 'component_type': {
   \   'linter_warnings': 'warning',
   \   'linter_errors': 'error',
+  \ },
+  \ 'tabline': {
+  \   'left': [['tabs']],
+  \   'right': [[]]
   \ }
 \ }
 function! CanLeftSideExpand(mode, path) abort
@@ -476,11 +480,10 @@ command! -nargs=* Rg
   \   "rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --color=always --glob '!.git/**' --glob '!.hg/**' --glob '!**/*.ico' --glob '!**/*.png' --glob '!**/*.jpg' --glob '!**/*.jpeg' --glob '!**/*.zip' --glob '!**/*.tar.gz' --glob '!**/*.gif' --glob '!**/*.avi' --glob '!**/*.mp4' --glob '!**/*.mp3' --glob '!**/*.ogg' --glob '!**/*.tgz' --glob '!**/*.gz' --glob '!**/*.ctg.z' --glob '!**/*.bcmap' ".<q-args>, 1,
   \ fzf#vim#with_preview('right:35%'),
   \ )
-nnoremap <C-t> :GitFiles<cr>
-nnoremap <C-p> :Files<cr>
-nnoremap <C-b> :Buffers<cr>
+nnoremap <leader>t :GitFiles<cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>b :Buffers<cr>
 nnoremap <C-f> :BLines<cr>
-nnoremap <C-g> :Rg<space>
 nnoremap <leader>; :Commands<cr>
 nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
 vnoremap <leader>g "zy:exe "Rg ".@z.""<CR>

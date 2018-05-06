@@ -6,11 +6,13 @@ set inccommand=split
 let g:tern_show_argument_hints = 'on_hold'
 let g:tern_show_signature_in_pum = 1
 
-let g:LanguageClient_serverCommands = {
-  \ 'reason': ['ocaml-language-server', '--stdio'],
-  \ 'ocaml': ['ocaml-language-server', '--stdio'],
-  \ }
-let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_serverCommands = {
+"   \ 'javascript': ['flow-language-server', '--stdio'],
+"   \ 'javascript.jsx': ['flow-language-server', '--stdio'],
+"   \ 'reason': ['ocaml-language-server', '--stdio'],
+"   \ 'ocaml': ['ocaml-language-server', '--stdio'],
+"   \ }
+let g:LanguageClient_autoStart = 0
 
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j

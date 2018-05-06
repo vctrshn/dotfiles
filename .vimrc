@@ -154,7 +154,7 @@ set autoindent
 " Special Chars
 set list
 set showbreak=↪
-set listchars=tab:»\ ,nbsp:_,trail:.,eol:¬
+set listchars=tab:»\ ,nbsp:_,trail:.
 
 " Search stuff
 set incsearch
@@ -191,6 +191,9 @@ set completeopt-=preview
 
 " Tags file
 set tags=tags
+
+" Folds are not my thing
+set nofoldenable
 
 " Map leader key to space
 let g:mapleader = ' '

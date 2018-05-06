@@ -24,6 +24,10 @@ HISTSIZE=130000
 HISTFILESIZE=-1
 export PROMPT_COMMAND="history -a; history -n"
 
+# Flow control is not my thing
+# https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+stty -ixon
+
 alias ga='git add'
 alias gc='git commit'
 alias gd='git diff'

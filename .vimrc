@@ -94,7 +94,12 @@ Plug 'w0ng/vim-hybrid'
 " Pending
 Plug 'wincent/terminus'
 Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/vim-peekaboo'
+Plug 'kergoth/vim-hilinks', { 'on': 'HLT!' }
+Plug 'kopischke/vim-fetch'
+Plug 'Olical/vim-enmasse', { 'on': 'EnMasse' }
+Plug 'hauleth/asyncdo.vim'
 
 " Neovim only plugins
 if (has('nvim'))
@@ -178,6 +183,7 @@ set fillchars+=vert:\|
 " Perf stuff
 set lazyredraw
 set ttyfast
+set timeoutlen=300
 set ttimeout
 set ttimeoutlen=50
 " Disable syntax highlighting after first 200 chars in a line
@@ -188,6 +194,10 @@ set noshowmatch
 " Autocomplete options
 set completeopt=menu,noinsert,menuone,noselect
 set completeopt-=preview
+
+" Using the mouse is not my thing
+let g:TerminusMouse=0
+set mouse=
 
 " Tags file
 set tags=tags
@@ -356,6 +366,9 @@ augroup END
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
 
+" Vim-Peekaboo config
+let g:peekaboo_window = 'vert bo 50new'
+
 " Search-relatd settings and mappings
 nnoremap <Esc><Esc> :nohlsearch<CR>
 nnoremap * *zz
@@ -484,7 +497,6 @@ nnoremap <leader>t :GitFiles<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <C-f> :BLines<cr>
-nnoremap <leader>; :Commands<cr>
 nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
 vnoremap <leader>g "zy:exe "Rg ".@z.""<CR>
 
@@ -494,6 +506,10 @@ nnoremap <C-c> :bp\|bd #<CR>
 nnoremap <leader>h :bp <CR>
 nnoremap <leader>l :bn <CR>
 
+" Tab Navigation
+nnoremap <S-Left> gT
+nnoremap <S-Right> gt
+
 " Map jk to exit insert mode
 inoremap jk <Esc>
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -502,14 +518,11 @@ inoremap ,, <Esc>A,<Esc>
 
 let g:tmux_navigator_save_on_switch = 1
 
-" Create splits using C+w+- and C+w+|
-nnoremap <silent> <C-w>- :sp<CR>
-nnoremap <silent> <C-w>\| :vsp<CR>
 " Resizing windows
-nnoremap <silent> <C-w>k :res +5<CR>
-nnoremap <silent> <C-w>j :res -5<CR>
-nnoremap <silent> <C-w>h :vertical resize -5<CR>
-nnoremap <silent> <C-w>l :vertical resize +5<CR>
+nnoremap <silent> <Up> 5<C-w>+
+nnoremap <silent> <Down> 5<C-w>-
+nnoremap <silent> <Left> 5<C-w><
+nnoremap <silent> <Right> 5<C-w>>
 
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_error = '✗'

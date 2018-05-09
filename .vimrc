@@ -100,6 +100,8 @@ Plug 'kergoth/vim-hilinks', { 'on': 'HLT!' }
 Plug 'kopischke/vim-fetch'
 Plug 'Olical/vim-enmasse', { 'on': 'EnMasse' }
 Plug 'hauleth/asyncdo.vim'
+Plug 'tpope/vim-rsi'
+Plug 'justinmk/vim-dirvish'
 
 " Neovim only plugins
 if (has('nvim'))

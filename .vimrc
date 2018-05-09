@@ -89,7 +89,8 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'w0ng/vim-hybrid'
+Plug 'skielbasa/vim-material-monokai'
+Plug 'chriskempson/base16-vim'
 
 " Pending
 Plug 'wincent/terminus'

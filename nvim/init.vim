@@ -24,6 +24,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 tnoremap <C-\> <C-\><C-n>
 tnoremap <S-Left> <C-\><C-n>gT
 tnoremap <S-Right> <C-\><C-n>gt
+tnoremap <C-u> <C-\><C-n><C-u>
 
 augroup terminal
   autocmd!

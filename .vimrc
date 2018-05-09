@@ -437,17 +437,12 @@ augroup trimwhitespace
 augroup end
 augroup frontend
   autocmd!
-  autocmd Filetype javascript nnoremap <buffer> gd :FlowJumpToDef<cr>
-  autocmd Filetype javascript nnoremap <buffer> gh :FlowType<cr>
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
   autocmd Filetype html,javascript EmmetInstall
   autocmd BufRead,BufNewFile *.flow set filetype=javascript
 augroup end
 augroup php
   autocmd!
-  autocmd BufNewFile,BufRead *.php setlocal omnifunc=hackcomplete#Complete
-  autocmd Filetype php nnoremap <buffer> gd :HackGotoDef<cr>
-  autocmd Filetype php nnoremap <buffer> gh :HackType<cr>
   " Template file syntax highlighting
   autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
 augroup end

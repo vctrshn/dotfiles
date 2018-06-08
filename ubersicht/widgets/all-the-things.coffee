@@ -3,25 +3,31 @@ command: "./all-the-things.sh"
 refreshFrequency: 5000
 
 render: (output) ->
-  data = JSON.parse output
+  return """
+    <div id='main'>
+      <div id='time'></div>
+      <div id='right-side'>
+        <div id='day'></div>
+        <div id='date'></div>
+        <div id='network'></div>
+        <div id='battery'></div>
+      </div>
+    </div>
+  """
 
-  batteryValues = data.batteryData.split(' ')
+update: (output, domEl) ->
+  [timeData, dayData, dateData, networkData, batteryData] = output.split '@'
+
+  batteryValues = batteryData.split(' ')
   percentage = batteryValues[0]
   chargeStatus = batteryValues[1].trim()
   chargeIcon = if chargeStatus == 'charging' then '⚡️' else '🔋'
 
-  return """
-    <div id='main'>
-      <div id='workspace'>❯❯ #{data.workspaceData}</div>
-      <div id='time'>#{data.timeData}</div>
-      <div id='right-side'>
-        <div id='day'>#{data.dayData}</div>
-        <div id='date'>#{data.dateData}</div>
-        <div id='network'>#{data.networkData}</div>
-        <div id='battery'>#{percentage}<span id='charge-icon'>#{chargeIcon}</span></div>
-      </div>
-    </div>
-  """
+  $(domEl).find('#time').text(timeData)
+  $(domEl).find('#day').text(dayData)
+  $(domEl).find('#date').text(dateData)
+  $(domEl).find('#network').text(networkData)
+  $(domEl).find('#battery').html("#{percentage}<span id='charge-icon'>#{chargeIcon}</span>")
 
 style: """
   width: 100%
@@ -34,20 +40,12 @@ style: """
     font-weight: 400
     height: 22px
     line-height: 22px
-    margin: 0
-    left: 0
-    right: 0
-    width: 100%
-
-  #workspace
-    color: #e06c75
-    margin-left: 10px
-    width: 33%
+    margin-left: 33%
 
   #time
     color: #d19a66
     text-align: center
-    width: 33%
+    width: 51%
 
   #right-side
     display: flex

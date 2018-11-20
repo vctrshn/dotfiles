@@ -77,7 +77,6 @@ Plug 'dyng/ctrlsf.vim'
 
 " UI
 Plug 'ap/vim-css-color'
-Plug 'itchyny/lightline.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'dhruvasagar/vim-zoom'
 
@@ -235,135 +234,22 @@ vnoremap <silent> <leader>s :'<, '>sort i<CR>
 set formatoptions+=j
 
 " Status line stuff
+let mode_map = {
+\ 'n': 'NORMAL', 'i': 'INSERT', 'R': 'REPLACE', 'v': 'VISUAL', 'V': 'V-LINE', "\<C-v>": 'V-BLOCK',
+\ 'c': 'COMMAND', 's': 'SELECT', 'S': 'S-LINE', "\<C-s>": 'S-BLOCK', 't': 'TERMINAL'
+\}
+highlight User1 guifg=#82b1ff gui=BOLD
 set noshowmode
 set laststatus=2
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ 'active': {
-  \   'left': [['mode'], ['path']],
-  \   'right': [['lineinfo'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']],
-  \ },
-  \ 'inactive': {
-  \   'left': [['path']],
-  \   'right': [],
-  \ },
-  \ 'component_expand': {
-  \   'linter_warnings': 'LightlineLinterWarnings',
-  \   'linter_errors': 'LightlineLinterErrors',
-  \   'linter_ok': 'LightlineLinterOK',
-  \ },
-  \ 'component_function': {
-  \   'mode': 'LightlineMode',
-  \   'path': 'LightlinePath',
-  \   'lineinfo': 'LightlineLineInfo',
-  \   'filetype': 'LightlineFiletype',
-  \ },
-  \ 'component_type': {
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \ },
-  \ 'tabline': {
-  \   'left': [['tabs']],
-  \   'right': [[]]
-  \ }
-\ }
-function! CanLeftSideExpand(mode, path) abort
-  let win_width = winwidth(0)
-  " arbitary best guess for total width of other sections
-  return len(a:mode) + len(a:path) < win_width - 20
-endfunction
-
-function! LightlineLinterWarnings() abort
-  let counts = ale#statusline#Count(bufnr(''))
-  let warnings_count = counts.warning + counts.style_warning + counts.info
-  return warnings_count == 0 ? '' : printf('%d ⚠ ', warnings_count)
-endfunction
-
-function! LightlineLinterErrors() abort
-  let counts = ale#statusline#Count(bufnr(''))
-  let errors_count = counts.error + counts.style_error
-  return errors_count == 0 ? '' : printf('%d ✗', errors_count)
-endfunction
-
-function! LightlineLinterOK() abort
-  let counts = ale#statusline#Count(bufnr(''))
-  return counts.total == 0 ? '✓ ' : ''
-endfunction
-
-function! LightlineMode() abort
-  if &filetype ==? 'fzf'
-    return 'FZF'
-  endif
-
-  let full_mode = lightline#mode()
-  let win_width = winwidth(0)
-  let full_path = expand('%')
-  if CanLeftSideExpand(full_mode, full_path)
-    return full_mode
-  endif
-
-  " Shrink the mode display to just a single character if the full path does
-  " not fit in the remaining space of the statusline
-  return strpart(full_mode, 0, 1)
-endfunction
-
-function! LightlinePath() abort
-  " This is so that the crazy commands fzf.vim runs to populate the fzf window
-  " doesn't show up as the path
-  if &filetype ==? 'fzf'
-    return ''
-  endif
-
-  let full_path = expand('%')
-  if full_path ==? ''
-    return getcwd()
-  endif
-
-  let win_width = winwidth(0)
-  let mode = LightlineMode()
-  if CanLeftSideExpand(mode, full_path)
-    return full_path
-  endif
-
-  " Truncate the path to fit inside of the remaining space
-  let max_len = win_width - 20
-  let full_len = len(full_path)
-  let subs = split(full_path, '/')
-  " If even the filename doesn't fit inside of the space, we're out of luck
-  let filename = subs[-1]
-  if len(filename) > max_len
-    return '…' . strpart(filename, 3)
-  endif
-
-  " Build up the pathstring backwards, starting with the most specific dirs
-  let path = filename
-  let i = -2
-  while len(path) < max_len && i > -1 * len(subs)
-    let path = subs[i] . '/' . path
-    if len(path) >= max_len
-      let len_diff = len(path) - max_len
-      return '…' . strpart(path, 3 + len_diff)
-    endif
-    let i -= 1
-  endwhile
-  return path
-endfunction
-
-function! LightlineLineInfo() abort
-  return winwidth(0) > 100 ? join(getpos('.')[1:2], ':') . '|' . line('$') : ''
-endfunction
-
-function! LightlineFiletype() abort
-  let custom_file_extensions = {
-  \   'javascript': 'js',
-  \   'javascript.jsx': 'js',
-  \ }
-  return has_key(custom_file_extensions, &ft) ? custom_file_extensions[&ft] : &ft
-endfunction
-augroup lightline
-  autocmd!
-  autocmd User ALELint call lightline#update()
-augroup END
+set statusline=
+set statusline+=%1*%{(get(mode_map,mode(),''))}
+set statusline+=\ %f              "{relative filepath}
+set statusline+=\ %m%{(&readonly\|\|!&modifiable?'🔒':'')}
+set statusline+=\ %=              "{space} {left-right separator}
+set statusline+=%a                "({current} of {total buffers in arglist})
+set statusline+=\ %y              "[{filetype}]
+set statusline+=\ %l:%c\|%L       "{line}:{column}|{total lines}
+set statusline+=%<
 
 " Vim-Sneak config
 let g:sneak#s_next = 1

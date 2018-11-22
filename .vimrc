@@ -124,8 +124,11 @@ endif
 if (has('guicursor'))
     set guicursor
 endif
-colorscheme one
-call one#highlight('jsObjectProp', '98c379', '', '')
+" colorscheme one
+" call one#highlight('jsObjectProp', '98c379', '', '')
+colorscheme palenight
+let s:colors = palenight#GetColors()
+call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey})
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -177,10 +180,9 @@ set virtualedit=onemore
 " Split windows below and right instead of above and left
 set splitbelow splitright
 
-" Wrap characters on lines that exceed 80 characters in length
 set colorcolumn=81
-" Set color of vertical split border
-set fillchars+=vert:\|
+" Make vertical split border a solid line
+set fillchars=vert:│
 
 " Perf stuff
 set lazyredraw
@@ -218,17 +220,19 @@ nnoremap <leader>e :source $MYVIMRC<cr>
 vnoremap <C-c> "+y
 " Proper pasting from outside applications
 set pastetoggle=<F2>
+" Support easier copying via the mouse
+nnoremap <leader>a :only<CR>:set nonumber<CR>
 
 " Moving lines up and down in visual mode
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Sorting inside of curly braces and paragraphs
-nnoremap <silent> <leader>c vi{:'<, '>sort i<CR>
-nnoremap <silent> <leader>p vip:'<, '>sort i<CR>
-nnoremap <silent> <leader>i vip:'<, '>sort /.\{-}\(require\\|from\)/ i<CR>
+nnoremap <silent> <leader>sc vi{:'<, '>sort i<CR>
+nnoremap <silent> <leader>sp vip:'<, '>sort i<CR>
+nnoremap <silent> <leader>si vip:'<, '>sort /.\{-}\(require\\|from\)/ i<CR>
 " Visual mode sorting of selection
-vnoremap <silent> <leader>s :'<, '>sort i<CR>
+vnoremap <silent> <leader>sp :'<, '>sort i<CR>
 
 " Delete comment character when joining commented lines
 set formatoptions+=j
@@ -267,17 +271,6 @@ nnoremap N Nzz
 nnoremap <leader>z :%s/<C-r><C-w>//g<Left><Left>
 " Incsearch.vim config
 let g:incsearch#auto_nohlsearch = 1
-" <Pending>: this gets pretty far along the way to replacing the small subset of
-" incsearch.vim that is actually used. If only neovim had support for <C-g>
-" and <C-t> :( https://github.com/neovim/neovim/issues/5525
-" https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs
-" nmap / <Plug>(incsearch-forward)
-" nmap ? <Plug>(incsearch-backward)
-" needed for mapping <Tab> in command-line mode
-set wildcharm=<C-z>
-cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>/<C-r>/" : "<C-z>"
-cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>?<C-r>/" : "<S-Tab>"
-" </Pending>
 " incsearch.vim x fuzzy x fuzzyspell x vim-easymotion
 " Bind Ctrl-C to actually initiate the easymotion, so that <CR> can just confirm
 " the current result
@@ -290,7 +283,7 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-nnoremap <silent><expr> <leader>/ incsearch#go(<SID>config_easyfuzzymotion())
+nnoremap <silent><expr> <leader><leader>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Easymotion config
 let g:EasyMotion_startofline = 1
@@ -304,7 +297,7 @@ let g:vim_json_syntax_conceal = 0
 
 " Swap colon to semicolon cuz lazy
 nnoremap ; :
-nnoremap : ;
+
 " Navigate between display lines
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -345,8 +338,6 @@ cnoremap w!! w !sudo tee > /dev/null %
 
 " Disable all GitGutter mappings, since signify seems to work better
 let g:gitgutter_map_keys = 0
-" GitGutterUndoHunk is too hard to type
-cabbrev revert GitGutterUndoHunk
 
 " CtrlSF Stuff
 let g:ctrlsf_ackprg = '/usr/local/bin/rg'
@@ -380,6 +371,8 @@ command! -nargs=* Rg
 nnoremap <leader>t :GitFiles<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>; :History:<cr>
+nnoremap <leader>/ :History/<cr>
 nnoremap <C-f> :BLines<cr>
 nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
 vnoremap <leader>g "zy:exe "Rg ".@z.""<CR>
@@ -395,8 +388,8 @@ nnoremap <S-Left> gT
 nnoremap <S-Right> gt
 
 " Map jk to exit insert mode
-inoremap jk <Esc>
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap jk <Esc>
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap ;; <Esc>A;<Esc>
 inoremap ,, <Esc>A,<Esc>
 

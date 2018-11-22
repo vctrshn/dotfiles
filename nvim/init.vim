@@ -1,5 +1,11 @@
 let g:python3_host_prog='/usr/local/bin/python3'
 
+" https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs
+" needed for mapping <Tab> in command-line mode
+set wildcharm=<C-z>
+cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>/<C-r>/" : "<C-z>"
+cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>?<C-r>/" : "<S-Tab>"
+
 " Live preview of substitution command
 set inccommand=split
 
@@ -14,8 +20,12 @@ let g:LanguageClient_serverCommands = {
   \ 'php': ['hh_client', 'lsp'],
   \ }
 let g:LanguageClient_autoStart = 1
+let g:LanguageClient_diagnosticsList = 'Location'
 nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+
+" Unlimited scrollback in terminal
+set scrollback=-1
 
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
@@ -24,7 +34,6 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 tnoremap <C-\> <C-\><C-n>
 tnoremap <S-Left> <C-\><C-n>gT
 tnoremap <S-Right> <C-\><C-n>gt
-tnoremap <C-u> <C-\><C-n><C-u>
 
 augroup terminal
   autocmd!

@@ -91,30 +91,10 @@ brew install vim --with-python3
 # Needed for tmux stuff: https://github.com/tmux-plugins/tmux-yank
 brew install reattach-to-user-namespace
 
-brew install tree
-brew install tig
-brew install ranger
-brew install icdiff
-brew install diff-so-fancy
-brew install watchman
-brew install highlight
+brew install tree tig ranger icdiff diff-so-fancy watchman highlight
 
 #---------------------------------BREW CASK------------------------------------
-brew cask install google-chrome
-brew cask install firefox
-brew cask install atom
-brew cask install iterm2
-brew cask install alfred
-brew cask install sublime-text
-brew cask install slack
-
-# 1) Amethyst
-# https://github.com/ianyh/Amethyst
-brew cask install amethyst
-
-# 2) karabiner
-# http://www.economyofeffort.com/2014/08/11/beyond-ctrl-remap-make-that-caps-lock-key-useful/
-brew cask install karabiner
+brew cask install google-chrome firefox atom iterm2 alfred sublime-text slack amethyst karabiner clipy
 
 #-----------------------------------NPM---------------------------------------
 npm install -g eslint

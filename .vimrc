@@ -31,22 +31,15 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
-" JS Language Support gets its own support whoop
 Plug 'flowtype/vim-flow', { 'for': ['javascript'] }
-" Plug 'othree/es.next.syntax.vim', { 'for': ['javascript'] }
-" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
-Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/plugged/tern_for_vim', 'do': 'yarn install', 'for': ['javascript'] }
-" Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript'] }
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown']}
 
 " Language Support
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'othree/html5.vim', { 'for': 'html' }
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'mxw/vim-xhp', { 'for': 'php' }
@@ -90,10 +83,15 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'chriskempson/base16-vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'kaicataldo/material.vim'
+Plug 'morhetz/gruvbox'
+Plug 'larsbs/vimterial_dark'
+Plug 'hzchirs/vim-material'
+Plug 'ayu-theme/ayu-vim'
 
 " Pending
 Plug 'wincent/terminus'
-Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kergoth/vim-hilinks', { 'on': 'HLT!' }
@@ -102,6 +100,8 @@ Plug 'Olical/vim-enmasse', { 'on': 'EnMasse' }
 Plug 'hauleth/asyncdo.vim'
 Plug 'tpope/vim-rsi'
 Plug 'justinmk/vim-dirvish'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'arthurxavierx/vim-caser'
 
 " Neovim only plugins
 if (has('nvim'))
@@ -436,11 +436,6 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
-let g:go_fmt_command = 'goimports'
-let g:go_metalinter_autosave = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+let g:caser_prefix = '<leader>c'
 
 call SourceIfExists('~/.work.after.vimrc')

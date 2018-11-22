@@ -374,7 +374,7 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>; :History:<cr>
 nnoremap <leader>/ :History/<cr>
 nnoremap <C-f> :BLines<cr>
-nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w>"
+nnoremap <expr> <leader>g (expand("<cword>") ==? "") ? ":Rg " : ":Rg \<C-r>\<C-w><CR>"
 vnoremap <leader>g "zy:exe "Rg ".@z.""<CR>
 
 " Buffer manipulation

@@ -50,33 +50,18 @@ nvm use stable
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 sudo chown -R $(whoami) /usr/local/Cellar
 
-# 1) git
-# https://git-scm.com/book/en/v1/Getting-Started-Installing-Git
 brew install git
 git config --global core.excludesfile "$HOME/.gitignore_global"
 
-# 2) tmux
-brew install tmux
+brew install tmux ctags python3 tree tig ranger icdiff diff-so-fancy watchman highlight reattach-to-user-namespace bat fd
 
-# 3) ctags
-brew install ctags
-
-# 4) fzf
-# https://github.com/junegunn/fzf
 brew install fzf
 /usr/local/opt/fzf/install
-
-# 5) ag
-# https://github.com/ggreer/the_silver_searcher
-brew install the_silver_searcher
 
 # 6) rg
 # https://github.com/BurntSushi/ripgrep
 brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
 brew install burntsushi/ripgrep/ripgrep-bin
-
-# 7) python3/pip3
-brew install python3
 
 # 8) neovim
 # https://github.com/neovim/homebrew-neovim/blob/master/README.md
@@ -87,31 +72,16 @@ sudo pip3 install --upgrade neovim
 # 9) vim
 brew install vim --with-python3
 
-# 10) reattach-to-user-namespace
-# Needed for tmux stuff: https://github.com/tmux-plugins/tmux-yank
-brew install reattach-to-user-namespace
-
-brew install tree tig ranger icdiff diff-so-fancy watchman highlight
-
 #---------------------------------BREW CASK------------------------------------
 brew cask install google-chrome firefox atom iterm2 alfred sublime-text slack amethyst karabiner clipy
 
 #-----------------------------------NPM---------------------------------------
-npm install -g eslint
-npm install -g tern
-npm install -g prettier
-npm install -g flow-bin
-npm install -g flow-vim-quickfix
-npm install -g tldr
+npm install -g eslint prettier flow-bin flow-vim-quickfix tldr
 
 #-----------------------------------TMUX---------------------------------------
 # 1) Get tpm
 # https://github.com/tmux-plugins/tpm
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-
-# 2) Get tmuxp
-# https://github.com/tony/tmuxp
-pip install tmuxp
 
 #----------------------------------Atom---------------------------------------
 # 1) Link in config files

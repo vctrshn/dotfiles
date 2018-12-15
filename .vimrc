@@ -19,7 +19,6 @@ Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'FooSoft/vim-argwrap'
-Plug 'kassio/neoterm'
 
 " More text objects
 Plug 'kana/vim-textobj-function'

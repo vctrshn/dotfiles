@@ -65,16 +65,16 @@ export XDEBUG_CONFIG="idekey=sublime.xdebug"
 
 # FZF Config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --glob "!.git/**"
---glob "!.hg/**" --glob "!**/*.ico" --glob "!**/*.png" --glob "!**/*.jpg"
---glob "!**/*.jpeg" --glob "!**/*.zip" --glob "!**/*.tar.gz" --glob "!**/*.gif"
---glob "!**/*.avi" --glob "!**/*.mp4" --glob "!**/*.mp3" --glob "!**/*.ogg"
---glob "!**/*.tgz" --glob "!**/*.gz" --glob "!**/*.ctg.z" --glob "!**/*.bcmap"'
-export FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --no-ignore --exclude '.git/**' --exclude '.hg/**' --exclude '**/*.ico' --exclude '**/*.png' --exclude '**/*.jpg' --exclude '**/*.jpeg' --exclude '**/*.zip' --exclude '**/*.tar.gz' --exclude '**/*.gif' --exclude '**/*.avi' --exclude '**/*.mp4' --exclude '**/*.mp3' --exclude '**/*.ogg' --exclude '**/*.tgz' --exclude '**/*.gz' --exclude '**/*.ctg.z' --exclude '**/*.bcmap' --exclude '**/*.pyc'"
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
-  --preview "(hightlight -O ansi -l {} || cat {}) 2> /dev/null"
+  --preview "[[ $(file --mime {}) =~ binary ]] &&
+                 echo {} is a binary file ||
+                 (bat --theme TwoDark --style "numbers,changes" --color=always {} ||
+                  head -500 {}) 2> /dev/null"
+  --preview-window right:35%
 '
 # git with FZF aliases
 alias add='git add $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'

@@ -59,13 +59,13 @@ export EDITOR=nvim
 export HISTCONTROL=erasedups
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git/**' --glob '!.hg/**' --glob '!**/*.ico' --glob '!**/*.png' --glob '!**/*.jpg' --glob '!**/*.jpeg' --glob '!**/*.zip' --glob '!**/*.tar.gz' --glob '!**/*.gif' --glob '!**/*.avi' --glob '!**/*.mp4' --glob '!**/*.mp3' --glob '!**/*.ogg' --glob '!**/*.tgz' --glob '!**/*.gz' --glob '!**/*.ctg.z' --glob '!**/*.bcmap'"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --no-ignore --exclude '.git/**' --exclude '.hg/**' --exclude '**/*.ico' --exclude '**/*.png' --exclude '**/*.jpg' --exclude '**/*.jpeg' --exclude '**/*.zip' --exclude '**/*.tar.gz' --exclude '**/*.gif' --exclude '**/*.avi' --exclude '**/*.mp4' --exclude '**/*.mp3' --exclude '**/*.ogg' --exclude '**/*.tgz' --exclude '**/*.gz' --exclude '**/*.ctg.z' --exclude '**/*.bcmap' --exclude '**/*.pyc'"
 export FZF_DEFAULT_OPTS='
   -m -i
   --bind ctrl-d:page-down,ctrl-u:page-up
   --preview "[[ $(file --mime {}) =~ binary ]] &&
                  echo {} is a binary file ||
-                 (highlight -O ansi -l {} ||
+                 (bat --theme TwoDark --style "numbers,changes" --color=always {} ||
                   head -500 {}) 2> /dev/null"
   --preview-window right:35%
 '
@@ -77,4 +77,4 @@ if [[ -s "$HOME/.config/work.bash" ]]; then
   source ~/.config/work.bash
 fi
 
-export PATH="$PATH:/usr/local/bin:/Users/vshen/homebrew/bin"
+export PATH="$PATH:/usr/local/bin:/Users/vshen/homebrew/bin:${HOME}/.config/yarn/global/node_modules/.bin${PATH:+:${PATH}}:/home/vshen/.cargo/bin"

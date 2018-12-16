@@ -88,7 +88,6 @@ Plug 'kaicataldo/material.vim'
 Plug 'morhetz/gruvbox'
 Plug 'larsbs/vimterial_dark'
 Plug 'hzchirs/vim-material'
-Plug 'ayu-theme/ayu-vim'
 
 " Pending
 Plug 'wincent/terminus'
@@ -349,6 +348,7 @@ let g:ctrlsf_winsize = '30%'
 let g:qf_mapping_ack_style = 1
 let g:qf_auto_open_quickfix = 0
 let g:qf_auto_open_loclist = 0
+let g:qf_bufname_or_text = 2
 
 " FZF stuff
 function! s:build_quickfix_list(lines)
@@ -363,7 +363,8 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_buffers_jump = 1
-command! -nargs=* Rg
+let g:fzf_layout = {'down': '45%'}
+command! -nargs=* -complete=dir Rg
   \ call fzf#vim#grep(
   \   "rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --color=always --glob '!.git/**' --glob '!.hg/**' --glob '!**/*.ico' --glob '!**/*.png' --glob '!**/*.jpg' --glob '!**/*.jpeg' --glob '!**/*.zip' --glob '!**/*.tar.gz' --glob '!**/*.gif' --glob '!**/*.avi' --glob '!**/*.mp4' --glob '!**/*.mp3' --glob '!**/*.ogg' --glob '!**/*.tgz' --glob '!**/*.gz' --glob '!**/*.ctg.z' --glob '!**/*.bcmap' ".<q-args>, 1,
   \ fzf#vim#with_preview('right:35%'),

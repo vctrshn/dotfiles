@@ -17,24 +17,16 @@ export DEFAULT_USER="vshen"
 bindkey -v
 export KEYTIMEOUT=1
 
-# User configuration
-export WORKON_HOME=~/Envs
-
-if [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-  source "/usr/local/bin/virtualenvwrapper.sh"
-fi
-
-export PATH="./node_modules/.bin:$HOME/.nvm/*/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar"
+export PATH="./node_modules/.bin:$HOME/.nvm/*/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar:/home/vshen/.cargo/bin"
 
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
-export TERM='xterm-256color'
+export TERM='xterm-kitty'
 
 # alias vim to neovim
 alias vim='nvim'
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # git aliases
 alias ga='git add'
@@ -60,9 +52,6 @@ alias so='source ~/.zshrc'
 # alias for sudo
 alias oops='sudo $(fc -ln -1)'
 
-# Xdebug for sublime
-export XDEBUG_CONFIG="idekey=sublime.xdebug"
-
 # FZF Config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --no-ignore --exclude '.git/**' --exclude '.hg/**' --exclude '**/*.ico' --exclude '**/*.png' --exclude '**/*.jpg' --exclude '**/*.jpeg' --exclude '**/*.zip' --exclude '**/*.tar.gz' --exclude '**/*.gif' --exclude '**/*.avi' --exclude '**/*.mp4' --exclude '**/*.mp3' --exclude '**/*.ogg' --exclude '**/*.tgz' --exclude '**/*.gz' --exclude '**/*.ctg.z' --exclude '**/*.bcmap' --exclude '**/*.pyc'"
@@ -82,23 +71,6 @@ alias checkout='git checkout $(git branch | fzf-tmux --tac -d 15)'
 alias gdiff='git diff $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
 alias show='git show --pretty="format:" $(git show --pretty="format:" --name-only | fzf-tmux --tac -d 15)'
 alias undo='git checkout -- $(git diff --name-only HEAD | fzf-tmux --tac -d 15)'
-
-# tmuxinator aliases
-alias dtop='tmux attach-session -d -t desktop'
-alias ltop='tmux attach-session -d -t laptop'
-alias desktop='mux desktop && dtop'
-alias laptop='mux laptop && ltop'
-
-# update all the things
-alias update='
-  brew upgrade fzf tmux neovim ripgrep-bin the_silver_searcher git ctags reattach-to-user-namespace python3 vim icdiff diff-so-fancy highlight;
-  nvm use latest && npm update -g eslint tern prettier;
-  sudo pip3 install --upgrade neovim tmuxp;
-'
-alias updateAll='
-  update;
-  vim +PlugInstall +PlugUpgrade +PlugUpdate
-'
 
 # source work specific config
 if [[ -s "$HOME/.config/work.zsh" ]]; then

@@ -8,7 +8,6 @@
 #   http://i.imgur.com/nBEEZ.png
 #
 
-#
 # 16 Terminal Colors
 # -- ---------------
 #  0 black
@@ -105,9 +104,9 @@ function prompt_sorin_setup {
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%(?.%F{green}.%F{red})❯%f'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%(?.%F{green}.%F{red})❮%f'
 
   # Set git-info parameters.
   zstyle ':prezto:module:git:info' verbose 'yes'
@@ -130,7 +129,7 @@ function prompt_sorin_setup {
 
   # Define prompts.
   PROMPT='
-%F{blue}%n@%m:%F{magenta}${_prompt_sorin_pwd}%f${git_info:+${(e)git_info[prompt]}}${git_info[rprompt]}
+%F{blue}%n@%m%f:%F{magenta}${_prompt_sorin_pwd}%f${git_info:+${(e)git_info[prompt]}}${git_info[rprompt]}
 ${editor_info[keymap]} '
   RPROMPT=''
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '

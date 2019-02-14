@@ -128,6 +128,9 @@ endif
 colorscheme palenight
 let s:colors = palenight#GetColors()
 call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey})
+call palenight#set_highlight('ALEWarning', { 'gui': 'underline' })
+call palenight#set_highlight('ALEWarningSign', { 'fg': s:colors.yellow })
+call palenight#set_highlight('ALEInfoSign', { 'fg': s:colors.blue })
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -414,7 +417,7 @@ let g:ale_fixers = {
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] [%code%] [%severity%] %s'
+let g:ale_echo_msg_format = '[%linter%][%code%][%severity%] %s'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
 nmap <silent> <C-e> <Plug>(ale_next_wrap)

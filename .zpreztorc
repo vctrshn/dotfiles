@@ -25,7 +25,6 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'git' \
   'history-substring-search' \
-  'syntax-highlighting' \
   'prompt'
 
 #
@@ -43,17 +42,3 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'superlinh'
-
-#
-# Syntax Highlighting
-#
-
-# Set syntax highlighters.
-# By default, only the main highlighter is enabled.
-zstyle ':prezto:module:syntax-highlighting' highlighters \
-  'main' \
-  'brackets' \
-  'pattern' \
-  'line' \
-  'cursor' \
-  'root'

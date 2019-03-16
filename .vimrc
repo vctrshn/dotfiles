@@ -44,6 +44,7 @@ Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'mxw/vim-xhp', { 'for': 'php' }
 Plug 'hhvm/vim-hack', { 'for': 'php' }
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 
 " Integrations
@@ -127,8 +128,18 @@ endif
 " call one#highlight('jsObjectProp', '98c379', '', '')
 colorscheme palenight
 let s:colors = palenight#GetColors()
-call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey})
-call palenight#set_highlight('ALEWarning', { 'gui': 'underline' })
+call palenight#set_highlight('Identifier', { 'fg': s:colors.white })
+call palenight#set_highlight('phpVarSelector', { 'fg': s:colors.white })
+call palenight#set_highlight('phpMethodsVar', { 'fg': s:colors.cyan })
+call palenight#set_highlight('phpMethod', { 'fg': s:colors.blue })
+call palenight#set_highlight('phpStorageClass', { 'fg': s:colors.purple })
+call palenight#set_highlight('phpStaticClasses', { 'fg': s:colors.light_red })
+call palenight#set_highlight('phpKeyword', { 'fg': s:colors.purple })
+call palenight#set_highlight('phpFunction', { 'fg': s:colors.blue })
+call palenight#set_highlight('phpParent', { 'fg': s:colors.white })
+call palenight#set_highlight('Operator', { 'fg': s:colors.purple })
+call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey })
+call palenight#set_highlight('ALEWarning', { 'gui': 'underline', 'sp': s:colors.yellow })
 call palenight#set_highlight('ALEWarningSign', { 'fg': s:colors.yellow })
 call palenight#set_highlight('ALEInfoSign', { 'fg': s:colors.blue })
 
@@ -323,6 +334,7 @@ augroup php
   autocmd!
   " Template file syntax highlighting
   autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
+  autocmd BufRead,BufNewFile *.php syn keyword phpStorageClass async final public private static class extends const abstract use interface trait require contained
 augroup end
 
 " Open help in a vertical split instead of the default horizontal split

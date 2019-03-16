@@ -240,22 +240,16 @@ xnoremap <silent> <leader>sp :'<, '>sort i<CR>
 set formatoptions+=j
 
 " Status line stuff
-let mode_map = {
-\ 'n': 'NORMAL', 'i': 'INSERT', 'R': 'REPLACE', 'v': 'VISUAL', 'V': 'V-LINE', "\<C-v>": 'V-BLOCK',
-\ 'c': 'COMMAND', 's': 'SELECT', 'S': 'S-LINE', "\<C-s>": 'S-BLOCK', 't': 'TERMINAL'
-\}
-highlight User1 guifg=#82b1ff gui=BOLD
-set noshowmode
 set laststatus=2
+exe 'highlight User1 guifg=' . s:colors.white.gui . ' guibg=' . s:colors.black.gui
 set statusline=
-set statusline+=%1*%{(get(mode_map,mode(),''))}
-set statusline+=\ %f              "{relative filepath}
-set statusline+=\ %m%{(&readonly\|\|!&modifiable?'🔒':'')}
+set statusline+=%1*%f             "{relative filepath}
+set statusline+=\ %m%r            "[modified][readonly]
 set statusline+=\ %=              "{space} {left-right separator}
 set statusline+=%a                "({current} of {total buffers in arglist})
 set statusline+=\ %y              "[{filetype}]
 set statusline+=\ %l:%c\|%L       "{line}:{column}|{total lines}
-set statusline+=%<
+set statusline+=%<                "truncate from right side
 
 " Vim-Sneak config
 let g:sneak#s_next = 1

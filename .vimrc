@@ -253,13 +253,18 @@ set formatoptions+=j
 " Status line stuff
 set laststatus=2
 exe 'highlight User1 guifg=' . s:colors.white.gui . ' guibg=' . s:colors.black.gui
+exe 'highlight User2 guifg=' . s:colors.blue.gui . ' guibg=' . s:colors.black.gui . ' gui=BOLD'
+exe 'highlight User3 guifg=' . s:colors.green.gui . ' guibg=' . s:colors.black.gui
+exe 'highlight User4 guifg=' . s:colors.purple.gui . ' guibg=' . s:colors.black.gui
+exe 'highlight User5 guifg=' . s:colors.yellow.gui . ' guibg=' . s:colors.black.gui
+exe 'highlight User6 guifg=' . s:colors.cyan.gui . ' guibg=' . s:colors.black.gui
 set statusline=
-set statusline+=%1*%f             "{relative filepath}
-set statusline+=\ %m%r            "[modified][readonly]
-set statusline+=\ %=              "{space} {left-right separator}
-set statusline+=%a                "({current} of {total buffers in arglist})
-set statusline+=\ %y              "[{filetype}]
-set statusline+=\ %l:%c\|%L       "{line}:{column}|{total lines}
+set statusline+=%2*%f             "{relative filepath}
+set statusline+=\ %6*%m%r         "[modified][readonly]
+set statusline+=\ %1*%=           "{space} {left-right separator}
+set statusline+=%5*%a             "({current} of {total buffers in arglist})
+set statusline+=\ %3*%y           "[{filetype}]
+set statusline+=\ %4*%l:%c\|%L    "{line}:{column}|{total lines}
 set statusline+=%<                "truncate from right side
 
 " Vim-Sneak config

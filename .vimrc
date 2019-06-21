@@ -431,6 +431,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%][%code%][%severity%] %s'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 let g:flow#enable = 0

@@ -27,10 +27,6 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 " Unlimited scrollback in terminal
 set scrollback=-1
 
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
 tnoremap <C-\> <C-\><C-n>
 tnoremap <S-Left> <C-\><C-n>gT
 tnoremap <S-Right> <C-\><C-n>gt

@@ -223,6 +223,8 @@ set tags=tags
 " Folds are not my thing
 set nofoldenable
 
+set nomodeline
+
 " Map leader key to space
 let g:mapleader = ' '
 

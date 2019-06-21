@@ -27,7 +27,7 @@ export DEFAULT_USER="vshen"
 bindkey -v
 export KEYTIMEOUT=1
 
-export PATH="./node_modules/.bin:$HOME/.nvm/*/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar:/home/vshen/.cargo/bin"
+export PATH="./node_modules/.bin:$HOME/.nvm/*/bin:$HOME/.brew/bin:$HOME/.brew/sbin:/opt/local/bin:usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar:/home/vshen/.cargo/bin"
 
 export EDITOR='vim'
 export USE_EDITOR=$EDITOR

@@ -93,6 +93,7 @@ Plug 'hzchirs/vim-material'
 " Pending
 Plug 'wincent/terminus'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-projectionist'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kergoth/vim-hilinks', { 'on': 'HLT!' }
 Plug 'kopischke/vim-fetch'
@@ -446,5 +447,12 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
 let g:caser_prefix = '<leader>c'
+
+" Vim-Projectionist Config
+let g:projectionist_heuristics = {
+  \ "*.js": {
+  \   "alternate": "{dirname}/__tests__/{basename}-test.js",
+  \   "type": "source"
+  \ }}
 
 call SourceIfExists('~/.work.after.vimrc')

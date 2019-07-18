@@ -31,7 +31,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
-Plug 'flowtype/vim-flow', { 'for': ['javascript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 
@@ -349,6 +348,8 @@ augroup end
 " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
 cnoreabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
 
+inoreabbrev clog console.log()
+
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -422,7 +423,7 @@ nnoremap <silent> <Right> 5<C-w>>
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_error = '✗'
 let g:ale_linters = {
-\   'javascript': ['eslint', 'flow'],
+\   'javascript': ['eslint', 'flow-language-server'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],

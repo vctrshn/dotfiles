@@ -356,6 +356,8 @@ cnoremap w!! w !sudo tee > /dev/null %
 " Disable all GitGutter mappings, since signify seems to work better
 let g:gitgutter_map_keys = 0
 
+let g:signify_vcs_list = [ 'git', 'hg' ]
+
 " CtrlSF Stuff
 let g:ctrlsf_ackprg = '/usr/local/bin/rg'
 let g:ctrlsf_confirm_save = 0
@@ -436,6 +438,10 @@ let g:ale_echo_msg_format = '[%linter%][%code%][%severity%] %s'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+let g:ale_pattern_options = {
+\   '\.md$': {'ale_enabled': 0},
+\   '\.txt$': {'ale_enabled': 0},
+\}
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 let g:flow#enable = 0

@@ -29,7 +29,7 @@ export KEYTIMEOUT=1
 
 export PATH="./node_modules/.bin:$HOME/.nvm/*/bin:$HOME/.brew/bin:$HOME/.brew/sbin:/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/Cellar:/home/vshen/.cargo/bin"
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 

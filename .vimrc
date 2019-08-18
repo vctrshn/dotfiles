@@ -142,6 +142,11 @@ call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey })
 call palenight#set_highlight('ALEWarning', { 'gui': 'underline', 'sp': s:colors.yellow })
 call palenight#set_highlight('ALEWarningSign', { 'fg': s:colors.yellow })
 call palenight#set_highlight('ALEInfoSign', { 'fg': s:colors.blue })
+call palenight#set_highlight('ALEVirtualTextWarning', { 'fg': s:colors.yellow })
+call palenight#set_highlight('ALEVirtualTextStyleWarning', { 'fg': s:colors.yellow })
+call palenight#set_highlight('ALEVirtualTextInfo', { 'fg': s:colors.blue })
+call palenight#set_highlight('ALEVirtualTextError', { 'fg': s:colors.red })
+call palenight#set_highlight('ALEVirtualTextStyleError', { 'fg': s:colors.red })
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -437,6 +442,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%][%code%][%severity%] %s'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
+let g:ale_virtualtext_cursor = 1
 let g:ale_completion_enabled = 1
 let g:ale_pattern_options = {
 \   '\.md$': {'ale_enabled': 0},

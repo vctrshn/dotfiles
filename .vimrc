@@ -46,9 +46,9 @@ Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 
 " Grepping/Linting
 Plug 'w0rp/ale'
-Plug 'romainl/vim-qf'
+Plug 'romainl/vim-qf', { 'for': ['qf'] }
 Plug 'wincent/ferret'
-Plug 'dyng/ctrlsf.vim'
+Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
 
 " UI
 Plug 'ap/vim-css-color'
@@ -59,12 +59,12 @@ Plug 'drewtempelmeyer/palenight.vim'
 " Pending
 Plug 'wincent/terminus'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectionist', { 'on': ['A', 'AS', 'AV', 'AT'] }
 Plug 'junegunn/vim-peekaboo'
 Plug 'kergoth/vim-hilinks', { 'on': 'HLT!' }
 Plug 'kopischke/vim-fetch'
 Plug 'Olical/vim-enmasse', { 'on': 'EnMasse' }
-Plug 'hauleth/asyncdo.vim'
+Plug 'hauleth/asyncdo.vim', { 'on': ['AsyncDo', 'LAsyncDo'] }
 Plug 'tpope/vim-rsi'
 Plug 'justinmk/vim-dirvish'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }

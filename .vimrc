@@ -34,7 +34,6 @@ Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 
 " Integrations
-Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Autocomplete/Snippets
@@ -168,8 +167,6 @@ inoreabbrev clog console.log()
 
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null %
-
-let g:signify_vcs_list = [ 'git', 'hg' ]
 
 " CtrlSF Stuff
 let g:ctrlsf_ackprg = '/usr/local/bin/rg'

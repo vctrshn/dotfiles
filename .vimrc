@@ -1,10 +1,3 @@
-" https://devel.tech/snippets/n/vIIMz8vZ/load-vim-source-files-only-if-it-exists/
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
-
 call plug#begin('~/.vim/plugged')
 
 " Essentials
@@ -79,7 +72,7 @@ Plug 'arthurxavierx/vim-caser'
 
 " Neovim only plugins
 if (has('nvim'))
-  call SourceIfExists('~/.nvim-plugins.vimrc')
+  Plug 'kassio/neoterm'
 endif
 
 call plug#end()

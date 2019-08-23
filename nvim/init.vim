@@ -12,21 +12,6 @@ cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>
 " Live preview of substitution command
 set inccommand=split
 
-let g:tern_show_argument_hints = 'on_hold'
-let g:tern_show_signature_in_pum = 1
-
-let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['flow', 'lsp'],
-  \ 'javascript.jsx': ['flow', 'lsp'],
-  \ 'reason': ['ocaml-language-server', '--stdio'],
-  \ 'ocaml': ['ocaml-language-server', '--stdio'],
-  \ 'php': ['hh_client', 'lsp'],
-  \ }
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_diagnosticsList = 'Location'
-nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-
 " Unlimited scrollback in terminal
 set scrollback=-1
 

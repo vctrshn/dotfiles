@@ -50,9 +50,6 @@ Plug 'romainl/vim-qf', { 'for': ['qf'] }
 Plug 'wincent/ferret'
 Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
 
-" UI
-Plug 'ap/vim-css-color'
-
 " Colorschemes
 Plug 'drewtempelmeyer/palenight.vim'
 

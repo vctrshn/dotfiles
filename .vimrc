@@ -10,7 +10,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
-Plug 'FooSoft/vim-argwrap'
+Plug 'FooSoft/vim-argwrap', { 'on': 'ArgWrap' }
 
 " More text objects
 Plug 'kana/vim-textobj-function'
@@ -88,8 +88,6 @@ nnoremap <leader>e :source $MYVIMRC<cr>
 " Better pasting
 " Mapping to copy to system clipboard
 xnoremap <C-c> "+y
-" Proper pasting from outside applications
-set pastetoggle=<F2>
 " Support easier copying via the mouse
 nnoremap <leader>a :only<CR>:set nonumber<CR>
 
@@ -169,7 +167,7 @@ inoreabbrev clog console.log()
 cnoremap w!! w !sudo tee > /dev/null %
 
 " CtrlSF Stuff
-let g:ctrlsf_ackprg = '/usr/local/bin/rg'
+let g:ctrlsf_ackprg = 'rg'
 let g:ctrlsf_confirm_save = 0
 let g:ctrlsf_indent = 2
 let g:ctrlsf_winsize = '30%'
@@ -196,8 +194,6 @@ inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap ;; <Esc>A;<Esc>
 inoremap ,, <Esc>A,<Esc>
 
-let g:tmux_navigator_save_on_switch = 1
-
 " Resizing windows
 nnoremap <silent> <Up> 5<C-w>+
 nnoremap <silent> <Down> 5<C-w>-
@@ -206,12 +202,6 @@ nnoremap <silent> <Right> 5<C-w>>
 
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='i'
-
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-
-let g:caser_prefix = '<leader>c'
 
 " Vim-Projectionist Config
 let g:projectionist_heuristics = {

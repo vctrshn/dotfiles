@@ -82,3 +82,6 @@ set nomodeline
 
 " Delete comment character when joining commented lines
 set formatoptions+=j
+
+" Proper pasting from outside applications
+set pastetoggle=<F2>

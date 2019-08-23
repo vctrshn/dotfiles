@@ -24,16 +24,11 @@ Plug 'kana/vim-textobj-function'
 Plug 'haya14busa/vim-textobj-function-syntax'
 
 " Navigation
-Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-
-Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 
 " Language Support
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elzr/vim-json', { 'for': 'json' }
@@ -46,13 +41,8 @@ Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 
 " Integrations
-Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-fugitive'
-Plug 'christoomey/vim-conflicted'
-Plug 'jreybert/vimagit'
-Plug 'wincent/vim-clipper'
 
 " Autocomplete/Snippets
 Plug 'Raimondi/delimitMate'
@@ -69,24 +59,9 @@ Plug 'dyng/ctrlsf.vim'
 
 " UI
 Plug 'ap/vim-css-color'
-Plug 'chrisbra/vim-diff-enhanced'
-Plug 'dhruvasagar/vim-zoom'
 
 " Colorschemes
-Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'ajh17/Spacegray.vim'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'skielbasa/vim-material-monokai'
-Plug 'chriskempson/base16-vim'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'kaicataldo/material.vim'
-Plug 'morhetz/gruvbox'
-Plug 'larsbs/vimterial_dark'
-Plug 'hzchirs/vim-material'
 
 " Pending
 Plug 'wincent/terminus'
@@ -164,26 +139,6 @@ nnoremap # #zz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>z :%s/<C-r><C-w>//g<Left><Left>
-" Incsearch.vim config
-let g:incsearch#auto_nohlsearch = 1
-" incsearch.vim x fuzzy x fuzzyspell x vim-easymotion
-" Bind Ctrl-C to actually initiate the easymotion, so that <CR> can just confirm
-" the current result
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzy#converter()],
-  \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<C-c>": '<Over>(easymotion)', "\<Esc>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-nnoremap <silent><expr> <leader><leader>/ incsearch#go(<SID>config_easyfuzzymotion())
-
-" Easymotion config
-let g:EasyMotion_startofline = 1
-let g:EasyMotion_smartcase = 1
-
 " JS syntax support
 let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'react'
@@ -233,9 +188,6 @@ inoreabbrev clog console.log()
 
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null %
-
-" Disable all GitGutter mappings, since signify seems to work better
-let g:gitgutter_map_keys = 0
 
 let g:signify_vcs_list = [ 'git', 'hg' ]
 

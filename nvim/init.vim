@@ -1,3 +1,5 @@
+set runtimepath+=~/.vim
+
 let g:python3_host_prog='/usr/local/bin/python3'
 
 " https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs

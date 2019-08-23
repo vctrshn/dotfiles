@@ -5,7 +5,6 @@ function! SourceIfExists(file)
   endif
 endfunction
 
-call SourceIfExists('~/.work.before.vimrc')
 call plug#begin('~/.vim/plugged')
 
 " Essentials
@@ -107,9 +106,6 @@ Plug 'arthurxavierx/vim-caser'
 if (has('nvim'))
   call SourceIfExists('~/.nvim-plugins.vimrc')
 endif
-
-" Work specific plugins
-call SourceIfExists('~/.work-plugins.vimrc')
 
 call plug#end()
 
@@ -470,4 +466,4 @@ let g:projectionist_heuristics = {
   \   "type": "source"
   \ }}
 
-call SourceIfExists('~/.work.after.vimrc')
+runtime after/plugin/work.vim

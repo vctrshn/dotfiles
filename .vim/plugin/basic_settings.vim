@@ -71,9 +71,6 @@ set noshowmatch
 set completeopt=menu,noinsert,menuone,noselect
 set completeopt-=preview
 
-" Using the mouse is not my thing
-set mouse=
-
 " Tags file
 set tags=tags
 

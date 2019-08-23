@@ -80,7 +80,6 @@ call plug#end()
 runtime plugin/basic_settings.vim
 runtime plugin/colors.vim
 
-let g:TerminusMouse=0
 
 " Map leader key to space
 let g:mapleader = ' '

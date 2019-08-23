@@ -81,6 +81,7 @@ runtime plugin/basic_settings.vim
 runtime plugin/colors.vim
 runtime plugin/statusline.vim
 runtime plugin/fzf_settings.vim
+runtime plugin/ale_settings.vim
 
 " Map leader key to space
 let g:mapleader = ' '
@@ -208,33 +209,6 @@ nnoremap <silent> <Up> 5<C-w>+
 nnoremap <silent> <Down> 5<C-w>-
 nnoremap <silent> <Left> 5<C-w><
 nnoremap <silent> <Right> 5<C-w>>
-
-let g:ale_sign_warning = '⚠'
-let g:ale_sign_error = '✗'
-let g:ale_linters = {
-\   'javascript': ['eslint', 'flow-language-server'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'javascript.jsx': ['prettier'],
-\}
-let g:ale_sign_column_always = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%][%code%][%severity%] %s'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_fix_on_save = 1
-let g:ale_virtualtext_cursor = 1
-let g:ale_completion_enabled = 1
-let g:ale_pattern_options = {
-\   '\.md$': {'ale_enabled': 0},
-\   '\.txt$': {'ale_enabled': 0},
-\}
-nmap <silent> <C-e> <Plug>(ale_next_wrap)
-
-let g:flow#enable = 0
-let g:flow#omnifunc = 0
-let g:flow#showquickfix = 0
 
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_mode='i'

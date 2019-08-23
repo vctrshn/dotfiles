@@ -79,7 +79,7 @@ call plug#end()
 
 runtime plugin/basic_settings.vim
 runtime plugin/colors.vim
-
+runtime plugin/statusline.vim
 
 " Map leader key to space
 let g:mapleader = ' '
@@ -105,17 +105,6 @@ nnoremap <silent> <leader>sp vip:'<, '>sort i<CR>
 nnoremap <silent> <leader>si vip:'<, '>sort /.\{-}\(require\\|from\)/ i<CR>
 " Visual mode sorting of selection
 xnoremap <silent> <leader>sp :'<, '>sort i<CR>
-
-" Status line stuff
-set laststatus=2
-set statusline=
-set statusline+=%2*%f             "{relative filepath}
-set statusline+=\ %6*%m%r         "[modified][readonly]
-set statusline+=\ %1*%=           "{space} {left-right separator}
-set statusline+=%5*%a             "({current} of {total buffers in arglist})
-set statusline+=\ %3*%y           "[{filetype}]
-set statusline+=\ %4*%l:%c\|%L    "{line}:{column}|{total lines}
-set statusline+=%<                "truncate from right side
 
 " Vim-Sneak config
 let g:sneak#s_next = 1

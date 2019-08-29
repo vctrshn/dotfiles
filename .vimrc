@@ -44,7 +44,7 @@ Plug 'othree/csscomplete.vim', { 'for': 'css' }
 Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 
 " Grepping/Linting
-Plug 'w0rp/ale', { 'for': ['javascript', 'php'] }
+Plug 'w0rp/ale'
 Plug 'romainl/vim-qf', { 'for': ['qf'] }
 Plug 'wincent/ferret'
 Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }

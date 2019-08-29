@@ -15,6 +15,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
 let g:ale_virtualtext_cursor = 1
 let g:ale_completion_enabled = 1
+let g:ale_completion_delay = 50
 let g:ale_pattern_options = {
 \   '\.md$': {'ale_enabled': 0},
 \   '\.txt$': {'ale_enabled': 0},

@@ -80,6 +80,9 @@ set nofoldenable
 " Modelines are not my thing
 set nomodeline
 
+" Using the mouse is not my thing
+set mouse=
+
 " Delete comment character when joining commented lines
 set formatoptions+=j
 

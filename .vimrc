@@ -73,12 +73,6 @@ endif
 
 call plug#end()
 
-runtime plugin/basic_settings.vim
-runtime plugin/colors.vim
-runtime plugin/statusline.vim
-runtime plugin/fzf_settings.vim
-runtime plugin/ale_settings.vim
-
 " Map leader key to space
 let g:mapleader = ' '
 
@@ -209,5 +203,3 @@ let g:projectionist_heuristics = {
   \   "alternate": "{dirname}/__tests__/{basename}-test.js",
   \   "type": "source"
   \ }}
-
-runtime after/plugin/work.vim

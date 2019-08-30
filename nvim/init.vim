@@ -2,12 +2,6 @@ source ~/.vimrc
 
 let g:python3_host_prog='/usr/local/bin/python3'
 
-" https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs
-" needed for mapping <Tab> in command-line mode
-set wildcharm=<C-z>
-cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>/<C-r>/" : "<C-z>"
-cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<CR>?<C-r>/" : "<S-Tab>"
-
 " Live preview of substitution command
 set inccommand=split
 

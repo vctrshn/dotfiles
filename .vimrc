@@ -110,6 +110,12 @@ nnoremap # #zz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>z :%s/<C-r><C-w>//g<Left><Left>
+" https://stackoverflow.com/questions/40192919/how-to-do-incremenatal-search-in-vim-like-it-is-done-in-emacs
+" needed for mapping <Tab> in command-line mode
+set wildcharm=<C-z>
+cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<C-g>" : "<C-z>"
+cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<C-t>" : "<S-Tab>"
+
 " JS syntax support
 let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'react'

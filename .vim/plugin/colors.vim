@@ -27,6 +27,8 @@ call palenight#set_highlight('ALEVirtualTextStyleWarning', { 'fg': s:colors.yell
 call palenight#set_highlight('ALEVirtualTextInfo', { 'fg': s:colors.blue })
 call palenight#set_highlight('ALEVirtualTextError', { 'fg': s:colors.red })
 call palenight#set_highlight('ALEVirtualTextStyleError', { 'fg': s:colors.red })
+call palenight#set_highlight('IncSearch', { 'fg': s:colors.black, 'bg': s:colors.blue, 'gui': 'underline' })
+call palenight#set_highlight('Search', { 'fg': s:colors.white, 'bg': s:colors.comment_grey })
 
 exe 'highlight User1 guifg=' . s:colors.white.gui . ' guibg=' . s:colors.black.gui
 exe 'highlight User2 guifg=' . s:colors.blue.gui . ' guibg=' . s:colors.black.gui . ' gui=BOLD'

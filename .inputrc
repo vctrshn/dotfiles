@@ -1,3 +1,27 @@
+# Make arrow keys behave like ZSH
+"\e[A":history-substring-search-backward
+"\e[B":history-substring-search-forward
+
+# Use Vim keybindings
 set editing-mode vi
 set keymap vi-command
-set show-mode-in-prmopt on
+set show-mode-in-prompt on
+set vi-ins-mode-string "❯❯❯"
+set vi-cmd-mode-string "❮❮❮"
+
+# List completions immediately instead of ringing bell
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Case-insensitive completion
+set completion-ignore-case on
+
+# Enable bracketed paste
+set enable-bracketed-paste on
+
+# Colors when using tab-completion
+set colored-stats on
+
+# Faster timeout, so that hitting Esc to switch to command mode doesn't take
+# forever
+set keyseq-timeout 50

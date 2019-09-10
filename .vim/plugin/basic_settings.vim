@@ -82,7 +82,6 @@ set nomodeline
 
 " Using the mouse is not my thing
 set mouse=
-let g:TerminusMouse=0
 
 " Delete comment character when joining commented lines
 set formatoptions+=j

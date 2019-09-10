@@ -53,7 +53,6 @@ Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
 Plug 'drewtempelmeyer/palenight.vim'
 
 " Pending
-Plug 'wincent/terminus'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-projectionist', { 'on': ['A', 'AS', 'AV', 'AT'] }
 Plug 'junegunn/vim-peekaboo'

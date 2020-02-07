@@ -21,6 +21,7 @@ set -o vi
 shopt -s histappend
 HISTSIZE=130000
 HISTFILESIZE=-1
+export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -a; history -n"
 
 # Flow control is not my thing
@@ -55,7 +56,6 @@ alias so='source ~/.bashrc'
 alias oops='sudo $(fc -ln -1)'
 
 export EDITOR=nvim
-export HISTCONTROL=ignoreboth:erasedups
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --no-ignore --exclude '.git/**' --exclude '.hg/**' --exclude '**/*.ico' --exclude '**/*.png' --exclude '**/*.jpg' --exclude '**/*.jpeg' --exclude '**/*.zip' --exclude '**/*.tar.gz' --exclude '**/*.gif' --exclude '**/*.avi' --exclude '**/*.mp4' --exclude '**/*.mp3' --exclude '**/*.ogg' --exclude '**/*.tgz' --exclude '**/*.gz' --exclude '**/*.ctg.z' --exclude '**/*.bcmap' --exclude '**/*.pyc'"
@@ -76,4 +76,4 @@ if [[ -s "$HOME/.config/work.bash" ]]; then
   source ~/.config/work.bash
 fi
 
-export PATH="$PATH:/usr/local/bin:/Users/vshen/homebrew/bin:${HOME}/.config/yarn/global/node_modules/.bin${PATH:+:${PATH}}:/home/vshen/.cargo/bin"
+export PATH="/opt/local/bin:/usr/local/bin:/Users/vshen/homebrew/bin:/Users/vshen/.brew/bin:/home/vshen/.cargo/bin:$PATH:${HOME}/.config/yarn/global/node_modules/.bin"

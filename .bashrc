@@ -76,4 +76,4 @@ if [[ -s "$HOME/.config/work.bash" ]]; then
   source ~/.config/work.bash
 fi
 
-export PATH="/opt/local/bin:/usr/local/bin:/Users/vshen/homebrew/bin:/Users/vshen/.brew/bin:/home/vshen/.cargo/bin:$PATH:${HOME}/.config/yarn/global/node_modules/.bin"
+export PATH="/opt/local/bin:$HOME/.emacs.d/bin:/usr/local/bin:$HOME/homebrew/bin:$HOME/.brew/bin:$HOME/.cargo/bin:$PATH:${HOME}/.config/yarn/global/node_modules/.bin"

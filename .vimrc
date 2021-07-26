@@ -48,6 +48,7 @@ Plug 'w0rp/ale'
 Plug 'romainl/vim-qf', { 'for': ['qf'] }
 Plug 'wincent/ferret'
 Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
+Plug 'mhinz/vim-grepper'
 
 " Colorschemes
 Plug 'drewtempelmeyer/palenight.vim'
@@ -208,3 +209,5 @@ let g:projectionist_heuristics = {
   \   "alternate": "{dirname}/__tests__/{basename}-test.js",
   \   "type": "source"
   \ }}
+
+nnoremap <C-g> /\%l<Left>

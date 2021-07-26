@@ -32,6 +32,7 @@ Plug 'mxw/vim-xhp', { 'for': 'php' }
 Plug 'hhvm/vim-hack', { 'for': 'php' }
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
+Plug 'fladson/vim-kitty', { 'branch': 'main' }
 
 " Integrations
 Plug 'christoomey/vim-tmux-navigator'

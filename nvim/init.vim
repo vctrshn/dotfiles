@@ -28,5 +28,6 @@ tnoremap <C-s> <C-\><C-n>:Ttoggle<CR>
 cnoreabbrev TT Topen \| T
 
 if (has('nvim-0.5'))
+  lua require 'treesitter-config'
   lua require 'lsp-config'
 endif

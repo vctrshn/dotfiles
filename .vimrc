@@ -20,17 +20,21 @@ Plug 'haya14busa/vim-textobj-function-syntax'
 Plug 'justinmk/vim-sneak'
 
 " Language Support
-Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+if (has('nvim-0.5.0'))
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+else
+  Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+  Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+  Plug 'elzr/vim-json', { 'for': 'json' }
+  Plug 'othree/html5.vim', { 'for': 'html' }
+  Plug 'mxw/vim-xhp', { 'for': 'php' }
+  Plug 'hhvm/vim-hack', { 'for': 'php' }
+  Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+  Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+endif
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
-Plug 'mxw/vim-xhp', { 'for': 'php' }
-Plug 'hhvm/vim-hack', { 'for': 'php' }
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'fladson/vim-kitty', { 'branch': 'main' }
 

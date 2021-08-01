@@ -26,3 +26,7 @@ let g:neoterm_default_mod = 'tab'
 nnoremap <C-s> :Ttoggle<CR>
 tnoremap <C-s> <C-\><C-n>:Ttoggle<CR>
 cnoreabbrev TT Topen \| T
+
+if (has('nvim-0.5'))
+  lua require 'lsp-config'
+endif

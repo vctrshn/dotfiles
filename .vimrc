@@ -45,7 +45,11 @@ Plug 'othree/csscomplete.vim', { 'for': 'css' }
 Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 
 " Grepping/Linting
-Plug 'w0rp/ale'
+if (has('nvim-0.5.0'))
+  Plug 'neovim/nvim-lspconfig'
+else
+  Plug 'w0rp/ale'
+endif
 Plug 'romainl/vim-qf', { 'for': ['qf'] }
 Plug 'wincent/ferret'
 Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }

@@ -45,8 +45,12 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript']}
-Plug 'othree/csscomplete.vim', { 'for': 'css' }
-Plug 'othree/jspc.vim', { 'for': ['javascript'] }
+if (has('nvim-0.5.0'))
+  Plug 'hrsh7th/nvim-compe'
+else
+  Plug 'othree/csscomplete.vim', { 'for': 'css' }
+  Plug 'othree/jspc.vim', { 'for': ['javascript'] }
+endif
 
 " Grepping/Linting
 if (has('nvim-0.5.0'))

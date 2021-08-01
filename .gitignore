@@ -1,0 +1,4 @@
+.vim/after/plugin/work.vim
+.vim/lua/work.lua
+.vim/plugged
+.vim/autoload/plug.vim

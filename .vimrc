@@ -60,7 +60,11 @@ Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
 Plug 'mhinz/vim-grepper'
 
 " Colorschemes
-Plug 'drewtempelmeyer/palenight.vim'
+if (has('nvim-0.5.0'))
+  Plug 'folke/tokyonight.nvim'
+else
+  Plug 'drewtempelmeyer/palenight.vim'
+endif
 
 " Pending
 Plug 'tpope/vim-unimpaired'

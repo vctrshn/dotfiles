@@ -6,33 +6,37 @@ endif
 if (has('guicursor'))
     set guicursor
 endif
-colorscheme palenight
-let s:colors = palenight#GetColors()
-call palenight#set_highlight('Identifier', { 'fg': s:colors.white })
-call palenight#set_highlight('phpVarSelector', { 'fg': s:colors.white })
-call palenight#set_highlight('phpMethodsVar', { 'fg': s:colors.cyan })
-call palenight#set_highlight('phpMethod', { 'fg': s:colors.blue })
-call palenight#set_highlight('phpStorageClass', { 'fg': s:colors.purple })
-call palenight#set_highlight('phpStaticClasses', { 'fg': s:colors.light_red })
-call palenight#set_highlight('phpKeyword', { 'fg': s:colors.purple })
-call palenight#set_highlight('phpFunction', { 'fg': s:colors.blue })
-call palenight#set_highlight('phpParent', { 'fg': s:colors.white })
-call palenight#set_highlight('Operator', { 'fg': s:colors.purple })
-call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey })
-call palenight#set_highlight('ALEWarning', { 'gui': 'underline', 'sp': s:colors.yellow })
-call palenight#set_highlight('ALEWarningSign', { 'fg': s:colors.yellow })
-call palenight#set_highlight('ALEInfoSign', { 'fg': s:colors.blue })
-call palenight#set_highlight('ALEVirtualTextWarning', { 'fg': s:colors.yellow })
-call palenight#set_highlight('ALEVirtualTextStyleWarning', { 'fg': s:colors.yellow })
-call palenight#set_highlight('ALEVirtualTextInfo', { 'fg': s:colors.blue })
-call palenight#set_highlight('ALEVirtualTextError', { 'fg': s:colors.red })
-call palenight#set_highlight('ALEVirtualTextStyleError', { 'fg': s:colors.red })
-call palenight#set_highlight('IncSearch', { 'fg': s:colors.black, 'bg': s:colors.blue, 'gui': 'underline' })
-call palenight#set_highlight('Search', { 'fg': s:colors.white, 'bg': s:colors.comment_grey })
+if (has('nvim-0.5'))
+  colorscheme tokyonight
+else
+  colorscheme palenight
+  let s:colors = palenight#GetColors()
+  call palenight#set_highlight('Identifier', { 'fg': s:colors.white })
+  call palenight#set_highlight('phpVarSelector', { 'fg': s:colors.white })
+  call palenight#set_highlight('phpMethodsVar', { 'fg': s:colors.cyan })
+  call palenight#set_highlight('phpMethod', { 'fg': s:colors.blue })
+  call palenight#set_highlight('phpStorageClass', { 'fg': s:colors.purple })
+  call palenight#set_highlight('phpStaticClasses', { 'fg': s:colors.light_red })
+  call palenight#set_highlight('phpKeyword', { 'fg': s:colors.purple })
+  call palenight#set_highlight('phpFunction', { 'fg': s:colors.blue })
+  call palenight#set_highlight('phpParent', { 'fg': s:colors.white })
+  call palenight#set_highlight('Operator', { 'fg': s:colors.purple })
+  call palenight#set_highlight('VertSplit', { 'fg': s:colors.menu_grey })
+  call palenight#set_highlight('ALEWarning', { 'gui': 'underline', 'sp': s:colors.yellow })
+  call palenight#set_highlight('ALEWarningSign', { 'fg': s:colors.yellow })
+  call palenight#set_highlight('ALEInfoSign', { 'fg': s:colors.blue })
+  call palenight#set_highlight('ALEVirtualTextWarning', { 'fg': s:colors.yellow })
+  call palenight#set_highlight('ALEVirtualTextStyleWarning', { 'fg': s:colors.yellow })
+  call palenight#set_highlight('ALEVirtualTextInfo', { 'fg': s:colors.blue })
+  call palenight#set_highlight('ALEVirtualTextError', { 'fg': s:colors.red })
+  call palenight#set_highlight('ALEVirtualTextStyleError', { 'fg': s:colors.red })
+  call palenight#set_highlight('IncSearch', { 'fg': s:colors.black, 'bg': s:colors.blue, 'gui': 'underline' })
+  call palenight#set_highlight('Search', { 'fg': s:colors.white, 'bg': s:colors.comment_grey })
 
-exe 'highlight User1 guifg=' . s:colors.white.gui . ' guibg=' . s:colors.black.gui
-exe 'highlight User2 guifg=' . s:colors.blue.gui . ' guibg=' . s:colors.black.gui . ' gui=BOLD'
-exe 'highlight User3 guifg=' . s:colors.green.gui . ' guibg=' . s:colors.black.gui
-exe 'highlight User4 guifg=' . s:colors.purple.gui . ' guibg=' . s:colors.black.gui
-exe 'highlight User5 guifg=' . s:colors.yellow.gui . ' guibg=' . s:colors.black.gui
-exe 'highlight User6 guifg=' . s:colors.cyan.gui . ' guibg=' . s:colors.black.gui
+  exe 'highlight User1 guifg=' . s:colors.white.gui . ' guibg=' . s:colors.black.gui
+  exe 'highlight User2 guifg=' . s:colors.blue.gui . ' guibg=' . s:colors.black.gui . ' gui=BOLD'
+  exe 'highlight User3 guifg=' . s:colors.green.gui . ' guibg=' . s:colors.black.gui
+  exe 'highlight User4 guifg=' . s:colors.purple.gui . ' guibg=' . s:colors.black.gui
+  exe 'highlight User5 guifg=' . s:colors.yellow.gui . ' guibg=' . s:colors.black.gui
+  exe 'highlight User6 guifg=' . s:colors.cyan.gui . ' guibg=' . s:colors.black.gui
+endif

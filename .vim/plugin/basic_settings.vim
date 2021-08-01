@@ -52,7 +52,6 @@ set virtualedit=onemore
 " Split windows below and right instead of above and left
 set splitbelow splitright
 
-set colorcolumn=81
 " Make vertical split border a solid line
 set fillchars=vert:│
 

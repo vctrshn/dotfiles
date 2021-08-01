@@ -3,7 +3,7 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-execute EmmetInstall
+execute "EmmetInstall"
 
 if (!has('nvim-0.5.0'))
   let g:jsx_ext_required = 0

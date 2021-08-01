@@ -165,12 +165,10 @@ augroup frontend
   autocmd!
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
   autocmd Filetype html,javascript EmmetInstall
-  autocmd BufRead,BufNewFile *.flow set filetype=javascript
 augroup end
 augroup php
   autocmd!
   " Template file syntax highlighting
-  autocmd BufRead,BufNewFile *.tmpl set filetype=smarty.html
   autocmd BufRead,BufNewFile *.php syn keyword phpStorageClass async final public private static class extends const abstract use interface trait require contained
 augroup end
 

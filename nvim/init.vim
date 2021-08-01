@@ -31,4 +31,5 @@ if (has('nvim-0.5'))
   lua require 'treesitter-config'
   lua require 'lsp-config'
   lua require 'compe-config'
+  lua require 'work'
 endif

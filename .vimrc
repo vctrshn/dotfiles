@@ -133,12 +133,6 @@ set wildcharm=<C-z>
 cnoremap <expr> <Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<C-g>" : "<C-z>"
 cnoremap <expr> <S-Tab> (getcmdtype() ==? "/" \|\| getcmdtype() ==? "?") ? "<C-t>" : "<S-Tab>"
 
-" JS syntax support
-let g:jsx_ext_required = 0
-let g:used_javascript_libs = 'react'
-let g:javascript_plugin_flow = 1
-let g:vim_json_syntax_conceal = 0
-
 " Swap colon to semicolon cuz lazy
 nnoremap ; :
 
@@ -161,22 +155,10 @@ augroup trimwhitespace
   autocmd!
   autocmd BufWritePre * :%s/\s\+$//e
 augroup end
-augroup frontend
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
-  autocmd Filetype html,javascript EmmetInstall
-augroup end
-augroup php
-  autocmd!
-  " Template file syntax highlighting
-  autocmd BufRead,BufNewFile *.php syn keyword phpStorageClass async final public private static class extends const abstract use interface trait require contained
-augroup end
 
 " Open help in a vertical split instead of the default horizontal split
 " http://vim.wikia.com/wiki/Replace_a_builtin_command_using_cabbrev
 cnoreabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
-
-inoreabbrev clog console.log()
 
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null %

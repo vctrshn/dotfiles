@@ -27,7 +27,7 @@ nnoremap <C-s> :Ttoggle<CR>
 tnoremap <C-s> <C-\><C-n>:Ttoggle<CR>
 cnoreabbrev TT Topen \| T
 
-if (has('nvim-0.5'))
+if (has('nvim-0.5') && !exists('g:vscode'))
   lua require 'treesitter-config'
   lua require 'lsp-config'
   lua require 'compe-config'

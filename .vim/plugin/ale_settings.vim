@@ -1,4 +1,4 @@
-if (has('nvim-0.5.0'))
+if (has('nvim-0.5.0') && !exists('g:vscode'))
   nnoremap <silent> gD :lua vim.lsp.buf.declaration()<CR>
   nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh :lua vim.lsp.buf.hover()<CR>

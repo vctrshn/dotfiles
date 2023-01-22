@@ -4,6 +4,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+if (has('nvim-0.7'))
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+endif
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-repeat'
@@ -55,6 +58,7 @@ endif
 " Grepping/Linting
 if (has('nvim-0.5.0'))
   Plug 'neovim/nvim-lspconfig'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
 else
   Plug 'w0rp/ale'
 endif
@@ -86,6 +90,7 @@ Plug 'arthurxavierx/vim-caser'
 " Neovim only plugins
 if (has('nvim'))
   Plug 'kassio/neoterm'
+  Plug 'nvim-lua/plenary.nvim'
 endif
 
 call plug#end()

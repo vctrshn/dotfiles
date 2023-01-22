@@ -3,5 +3,5 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.typescript.used_by = "javascript"
+local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
+ft_to_parser.javascript = "typescript"

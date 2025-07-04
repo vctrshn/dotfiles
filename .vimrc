@@ -36,13 +36,9 @@ else
   Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 endif
 Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
-Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'fladson/vim-kitty', { 'branch': 'main' }
-
-" Integrations
-Plug 'christoomey/vim-tmux-navigator'
 
 " Autocomplete/Snippets
 Plug 'Raimondi/delimitMate'

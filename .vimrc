@@ -25,56 +25,32 @@ Plug 'justinmk/vim-sneak'
 " Language Support
 if (has('nvim-0.5.0'))
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-else
-  Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-  Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
-  Plug 'elzr/vim-json', { 'for': 'json' }
-  Plug 'othree/html5.vim', { 'for': 'html' }
-  Plug 'mxw/vim-xhp', { 'for': 'php' }
-  Plug 'hhvm/vim-hack', { 'for': 'php' }
-  Plug 'StanAngeloff/php.vim', { 'for': 'php' }
-  Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 endif
-Plug 'blueyed/smarty.vim', { 'for': 'smarty' }
-Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
-Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
-Plug 'fladson/vim-kitty', { 'branch': 'main' }
 
 " Autocomplete/Snippets
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript']}
 if (has('nvim-0.5.0'))
   Plug 'hrsh7th/nvim-compe'
-else
-  Plug 'othree/csscomplete.vim', { 'for': 'css' }
-  Plug 'othree/jspc.vim', { 'for': ['javascript'] }
 endif
 
 " Grepping/Linting
 if (has('nvim-0.5.0'))
   Plug 'neovim/nvim-lspconfig'
   Plug 'jose-elias-alvarez/null-ls.nvim'
-else
-  Plug 'w0rp/ale'
 endif
 Plug 'romainl/vim-qf', { 'for': ['qf'] }
 Plug 'wincent/ferret'
-Plug 'dyng/ctrlsf.vim', { 'on': ['CtrlSF'] }
 Plug 'mhinz/vim-grepper'
 
 " Colorschemes
 if (has('nvim-0.5.0'))
   Plug 'folke/tokyonight.nvim'
-else
-  Plug 'drewtempelmeyer/palenight.vim'
 endif
 
 " Pending
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-projectionist', { 'on': ['A', 'AS', 'AV', 'AT'] }
 Plug 'junegunn/vim-peekaboo'
-Plug 'kergoth/vim-hilinks', { 'on': 'HLT!' }
 Plug 'kopischke/vim-fetch'
 Plug 'Olical/vim-enmasse', { 'on': 'EnMasse' }
 Plug 'hauleth/asyncdo.vim', { 'on': ['AsyncDo', 'LAsyncDo'] }
@@ -164,12 +140,6 @@ cnoreabbrev h <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'vert h' : 'h')<cr>
 " Allow saving of files as sudo when forgot to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null %
 
-" CtrlSF Stuff
-let g:ctrlsf_ackprg = 'rg'
-let g:ctrlsf_confirm_save = 0
-let g:ctrlsf_indent = 2
-let g:ctrlsf_winsize = '30%'
-
 " Vim-QF config
 let g:qf_mapping_ack_style = 1
 let g:qf_auto_open_quickfix = 0
@@ -187,7 +157,6 @@ nnoremap <S-Left> gT
 nnoremap <S-Right> gt
 
 " Map jk to exit insert mode
-" inoremap jk <Esc>
 inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap ;; <Esc>A;<Esc>
 inoremap ,, <Esc>A,<Esc>
@@ -197,15 +166,5 @@ nnoremap <silent> <Up> 5<C-w>+
 nnoremap <silent> <Down> 5<C-w>-
 nnoremap <silent> <Left> 5<C-w><
 nnoremap <silent> <Right> 5<C-w>>
-
-let g:user_emmet_leader_key='<C-e>'
-let g:user_emmet_mode='i'
-
-" Vim-Projectionist Config
-let g:projectionist_heuristics = {
-  \ "*.js": {
-  \   "alternate": "{dirname}/__tests__/{basename}-test.js",
-  \   "type": "source"
-  \ }}
 
 nnoremap <C-g> /\%l<Left>

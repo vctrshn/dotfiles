@@ -68,3 +68,9 @@ nnoremap <silent> <Right> 5<C-w>>
 
 " Jump to line with preview
 nnoremap <C-g> /\%l<Left>
+
+" Navigating Splits
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l

@@ -2,6 +2,9 @@ filetype plugin indent on
 syntax enable
 set number
 
+" Map leader key to space
+let g:mapleader = ' '
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " Use Unix as the standard file type

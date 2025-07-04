@@ -31,5 +31,5 @@ if (has('nvim-0.5') && !exists('g:vscode'))
   lua require 'treesitter-config'
   lua require 'lsp-config'
   lua require 'compe-config'
-  lua require 'work'
+  lua pcall(require, 'work')
 endif

@@ -6,8 +6,4 @@ endif
 if (has('guicursor'))
     set guicursor
 endif
-if (has('nvim-0.5'))
-  colorscheme tokyonight
-else
-  colorscheme habamax
-endif
+colorscheme habamax

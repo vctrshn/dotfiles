@@ -27,9 +27,12 @@ vim.cmd([[
   nnoremap <C-s> :Ttoggle<CR>
   tnoremap <C-s> <C-\><C-n>:Ttoggle<CR>
   cnoreabbrev TT Topen \| T
+
+  nnoremap <silent> <leader>q :ArgWrap<CR>
 ]])
 
 if not vim.g.vscode then
+  require('config.lazy')
   require('treesitter-config')
   require('lsp-config')
   require('compe-config')

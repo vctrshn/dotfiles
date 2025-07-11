@@ -59,16 +59,13 @@ config.keys = {
     mods = 'CMD|SHIFT',
     action = wezterm.action.ActivatePaneDirection 'Down',
   },
-  {
-    event = { Up = { streak = 1, button = 'Left' } },
-    mods = 'CMD',
-    action = wezterm.action.OpenLinkAtMouseCursor,
-  },
 }
 
 config.quick_select_patterns = {
   'D[0-9]+',
   'T[0-9]+',
 }
+
+config.quit_when_all_windows_are_closed = false
 
 return config
